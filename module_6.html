@@ -1,0 +1,469 @@
+<h1 id="regex-and-dfa">Regex and DFA</h1>
+<h2 id="goals">Goals</h2>
+<ol type="1">
+<li><p>Determine the components of regular expressions.</p></li>
+<li><p>Write simple regular expressions</p></li>
+<li><p>Trace the operation of a DFA (deterministic finite-state
+automaton) represented as a diagram) on an input, and indicate whether
+the DFA accepts or rejects the input.</p></li>
+<li><p>Deduce the language accepted by a simple DFA after working
+through multiple example inputs.</p></li>
+<li><p>Identify when a Regular Expression can be apply to solve a
+problem.</p></li>
+<li><p>Explain the difference between a DFA and a NFA.</p></li>
+<li><p>Understand what a Turing machine is and its differences to DFA
+and NFA. Identify the operation of a Turing Machine by describing the
+inputs and outputs in the tape.</p></li>
+</ol>
+<h2 id="definitions">Definitions</h2>
+<h2 id="formal-languages">Formal Languages</h2>
+<p>words are composed of valid characters, and sentences are composed of
+valid words. We can extend this in mathematics to develop a system to
+formalize representation of such symbols.</p>
+<p><strong>Alphabet</strong> <span
+class="math inline"><em>Σ</em></span>: A finite set of characters</p>
+<p><strong>String over</strong> <span
+class="math inline"><em>Σ</em></span>: (1) a <strong>finite</strong>
+juxtaposition of elements (<strong>characters</strong>) of <span
+class="math inline"><em>Σ</em></span> or (2) the <strong>null
+string</strong> <span class="math inline"><em>λ</em></span></p>
+<p><strong>Length of string over</strong> <span
+class="math inline"><em>Σ</em></span>: the <strong>number of
+characters</strong> that make up the string (<span
+class="math inline"><em>λ</em></span> has length 0)</p>
+<p><strong>Formal language over</strong> <span
+class="math inline"><em>Σ</em></span>: a set of <strong>strings</strong>
+over the <strong>alphabet</strong></p>
+<blockquote>
+<p>Example: let <span
+class="math inline"><em>Σ</em> = {<em>a</em>, <em>b</em>}</span> We
+define the language <span class="math inline"><em>L</em></span> over
+<span class="math inline"><em>Σ</em></span> that begins with the letter
+a, and has a length of at most 3 characters, find L</p>
+<p><span
+class="math inline"><em>L</em> = {<em>a</em>, <em>a</em><em>a</em>, <em>a</em><em>b</em>, <em>a</em><em>a</em><em>a</em>, <em>a</em><em>a</em><em>b</em>, <em>a</em><em>b</em><em>a</em>, <em>a</em><em>b</em><em>b</em>}</span></p>
+</blockquote>
+<h3 id="alphabet">Alphabet</h3>
+<p>Just like the number set, the alphabet can be constrained to several
+subtypes. Let <span class="math inline"><em>Σ</em></span> be an
+alphabet. For each nonnegative integer <span
+class="math inline"><em>n</em></span>, let - <span
+class="math inline"><em>Σ</em><sup><em>n</em></sup>=</span> the set of
+all strings over <span class="math inline"><em>Σ</em></span> that have
+length <span class="math inline"><em>n</em></span> - <span
+class="math inline"><em>Σ</em><sup>+</sup>=</span> the set of all
+strings over <span class="math inline"><em>Σ</em></span> that have
+length at least 1 (think natural numbers) - <span
+class="math inline"><em>Σ</em><sup>*</sup>=</span> the set of all string
+over <span class="math inline"><em>Σ</em></span></p>
+<p>Note that <span
+class="math inline"><em>Σ</em><sup><em>n</em></sup></span> is
+essentially the <strong>Cartesian product</strong> of <span
+class="math inline"><em>n</em></span> copies of <span
+class="math inline"><em>Σ</em></span>. The language <span
+class="math inline"><em>Σ</em><sup>*</sup></span> is called the
+<strong>Kleene closure</strong> of <span
+class="math inline"><em>Σ</em></span> (Stephen C. Kleene,pronounced
+CLAY-nee). <span class="math inline"><em>Σ</em><sup>+</sup></span> is
+the set of all strings over <span class="math inline"><em>Σ</em></span>
+except for <span class="math inline"><em>λ</em></span> and is called the
+<strong>positive closure</strong> of <span
+class="math inline"><em>Σ</em></span>.</p>
+<blockquote>
+<p>Example: let <span
+class="math inline"><em>Σ</em> = {<em>a</em>, <em>b</em>}</span>, find
+the value of <span
+class="math inline"><em>Σ</em><sup>0</sup>, <em>Σ</em><sup>1</sup>, <em>Σ</em><sup>2</sup>, <em>Σ</em><sup>1</sup> ∪ <em>Σ</em><sup>2</sup></span><br />
+<span
+class="math inline"><em>Σ</em><sup>0</sup> = {<em>λ</em>}, <em>Σ</em><sup>1</sup> = {<em>a</em>, <em>b</em>}, <em>Σ</em><sup>2</sup> = {<em>a</em><em>a</em>, <em>a</em><em>b</em>, <em>b</em><em>a</em>, <em>b</em><em>b</em>}</span><br />
+<span
+class="math inline"><em>Σ</em><sup>1</sup> ∪ <em>Σ</em><sup>2</sup> = {<em>a</em>, <em>b</em>, <em>a</em><em>a</em>, <em>a</em><em>b</em>, <em>b</em><em>a</em>, <em>b</em><em>b</em>}</span>
+the set of string over <span class="math inline"><em>Σ</em></span> with
+a length of at least 2.</p>
+</blockquote>
+<h3 id="concatenation">Concatenation</h3>
+<p><strong>Concatenation</strong> is the process of <strong>joining two
+strings</strong>. We can extend the concatenation operation on two
+languages to form a new language. Let <span
+class="math inline"><em>x</em></span> and <span
+class="math inline"><em>y</em></span> be two string over some alphabet
+<span class="math inline"><em>Σ</em></span>. The concatenation of <span
+class="math inline"><em>x</em></span> and <span
+class="math inline"><em>y</em></span> is the process of writing all the
+characters of <span class="math inline"><em>x</em></span> then <span
+class="math inline"><em>y</em></span> to form <span
+class="math inline"><em>x</em><em>y</em></span>. For any language <span
+class="math inline"><em>L</em></span> and <span
+class="math inline"><em>L</em>′</span>, we can form the following 3 new
+languages: - The <strong>concatenation</strong> of <span
+class="math inline"><em>L</em></span> and <span
+class="math inline"><em>L</em>′</span>, denoted as <span
+class="math inline"><em>L</em><em>L</em>′</span>, is <span
+class="math display"><em>L</em><em>L</em>′ = {<em>x</em><em>y</em>|<em>x</em> ∈ <em>L</em> ∧ <em>y</em> ∈ <em>L</em>′}</span>
+- The <strong>union</strong> of <span
+class="math inline"><em>L</em></span> and <span
+class="math inline"><em>L</em>′</span> (string is in either languages,
+<span class="math inline">∨</span>), denoted as <span
+class="math inline"><em>L</em> ∪ <em>L</em>′</span>, is <span
+class="math display"><em>L</em> ∪ <em>L</em>′ = {<em>x</em>|<em>x</em> ∈ <em>L</em> ∨ <em>x</em> ∈ <em>L</em>′}</span>
+- The <strong>Kleene Closure</strong> of <span
+class="math inline"><em>L</em></span> (join any string in <span
+class="math inline"><em>L</em></span>), denoted as <span
+class="math inline"><em>L</em><sup>*</sup></span>, is <span
+class="math display"><em>L</em><sup>*</sup> = {<em>x</em>|<em>x</em> is
+a concatenation of any finite number of strings in <em>L</em>}</span>
+Note: <span
+class="math inline"><em>λ</em> ∈ <em>L</em><sup>*</sup></span> because
+is a concatenation of 0 strings in <span
+class="math inline"><em>L</em></span>.</p>
+<blockquote>
+<p>Example: bro idk bruh sobsobsobs</p>
+</blockquote>
+<h2 id="regular-expressions">Regular Expressions</h2>
+<p><strong>Regular expressions</strong> are a way to define languages, a
+concept introduced by <strong>Kleene</strong>. A regular expression
+represents some string in the language. We can
+<strong>recursively</strong> define the set of all regular expression on
+an alphabet as follows:</p>
+<p>Given an alphabet <span class="math inline"><em>Σ</em></span>, the
+following are <strong>regular expressions</strong> over <span
+class="math inline"><em>Σ</em></span>: 1. <strong>Base</strong>: <span
+class="math inline">∅</span>, <span
+class="math inline"><em>λ</em></span>, and each individual symbol in
+<span class="math inline"><em>Σ</em></span> are regular expression over
+<span class="math inline"><em>Σ</em></span> 2.
+<strong>Recursion</strong>: If <span
+class="math inline"><em>r</em></span> and <span
+class="math inline"><em>s</em></span> are regular expressions over <span
+class="math inline"><em>Σ</em></span>, then the following are also
+regular expressions over <span class="math inline"><em>Σ</em></span>:
+<span class="math display">(i) (<em>r</em><em>s</em>)     (ii)
+(<em>r</em>|<em>s</em>)     (iii) (<em>r</em><sup>*</sup>)</span> where
+<span class="math inline"><em>r</em><em>s</em></span> is the
+concatenation of <span class="math inline"><em>r</em></span> and <span
+class="math inline"><em>s</em></span>; <span
+class="math inline"><em>r</em><sup>*</sup></span> is finite self
+concatenation(a repeat, or Kleene Closure); <span
+class="math inline"><em>r</em>|<em>s</em></span> is either strings <span
+class="math inline"><em>r</em></span> OR <span
+class="math inline"><em>s</em></span>. 3. <strong>Restriction</strong>:
+nothing is a regular expression of <span
+class="math inline"><em>Σ</em></span> except for objects defined in (1)
+and (2) above.</p>
+<blockquote>
+<p>Example: a regular expression of <span
+class="math inline"><em>Σ</em> = {<em>a</em>, <em>b</em>, <em>c</em>}</span>
+can be <span
+class="math display"><em>a</em>|(<em>b</em>|<em>c</em>)<sup>*</sup>|(<em>a</em><em>b</em>)<sup>*</sup></span></p>
+</blockquote>
+<h3 id="order-of-precedence">Order of Precedence</h3>
+<p>To evaluate regular expressions, each operation follows some order of
+precedence. We can always use brackets to eliminate confusion. The
+evaluation order of regular expressions are as follows: 1. brackets
+<span class="math inline">( )</span> are evaluated first 2. Kleene
+closures <span class="math inline">(*)</span> are second 3.
+concatenations are third 4. or <span class="math inline">( | )</span> is
+last</p>
+<h3 id="language-defined-by-a-regular-expression">Language Defined by a
+Regular Expression</h3>
+<p>Now we can work backwards to determine the language that is defined
+by a regular expression. Similar to the definition of regular
+expressions, this is also recursively defined. For a regular expression
+<span class="math inline"><em>r</em></span>, <span
+class="math inline"><em>L</em>(<em>r</em>)</span> is the language
+defined by <span class="math inline"><em>r</em></span>. 1.
+<strong>Base</strong>: <span
+class="math inline"><em>L</em>(∅) = ∅, <em>L</em>(<em>λ</em>) = <em>λ</em>, <em>L</em>(<em>a</em>) = <em>a</em></span>
+for every a in <span class="math inline"><em>Σ</em></span> 2.
+<strong>Recursion</strong>: If <span
+class="math inline"><em>L</em>(<em>r</em>)</span> and <span
+class="math inline"><em>L</em>(<em>r</em>′)</span> are the languages
+defined by the regular expressions <span
+class="math inline"><em>r</em></span> and <span
+class="math inline"><em>r</em>′</span> over <span
+class="math inline"><em>Σ</em></span>, then <span
+class="math display">(i)
+<em>L</em>(<em>r</em><em>r</em>′) = <em>L</em>(<em>r</em>)<em>L</em>(<em>r</em>′)    (ii)
+<em>L</em>(<em>r</em>|<em>r</em>′) = <em>L</em>(<em>r</em>) ∪ <em>L</em>(<em>r</em>′)    (iii)
+<em>L</em>(<em>r</em><sup>*</sup>) = (<em>L</em>(<em>r</em>))<sup>*</sup></span>
+3. <strong>Restriction</strong>: The language <span
+class="math inline"><em>L</em></span> is completely defined by (1) and
+(2) above.</p>
+<p>In fact, <strong>any</strong> finite language can be defined by a
+regular expression</p>
+<h3 id="regular-expression-to-language-using-set-notation">Regular
+expression to Language (using set notation)</h3>
+<p>We can use the language rules of regular expressions to write the
+language defined by a regular expression with set notation</p>
+<blockquote>
+<p>Example: For <span
+class="math inline"><em>Σ</em> = {<em>a</em>, <em>b</em>}</span>,
+determine the language defined by <span
+class="math inline">(<em>a</em>|<em>b</em>)*</span> <span
+class="math display">$$\begin{align*}
+L((a | b)*) &amp; = L(a | b)*\\
+&amp; = (L(a) \cup L(b))*\\
+&amp; = (\{a\} \cup \{b\})\\
+&amp; = \{a, b\}*\\
+&amp; = \text{the set of all strings of a's and b's}\\
+&amp; = \Sigma^*
+\end{align*}$$</span></p>
+</blockquote>
+<h3
+id="now-just-have-a-ton-of-example-that-im-too-lazy-to-write-lol-just-do-practice-or-smth-lol">now
+just have a ton of example that im too lazy to write lol !!!!! just do
+practice or smth lol!!!</h3>
+<h2 id="practical-applications-of-regular-expressions">Practical
+Applications of Regular Expressions</h2>
+<p>Regular expression can replace long chains of if else statements in
+code to search for certain patters. A recursively defined regex pattern
+can identity pattern in a succinct way. Because of its common use, there
+are a bunch of shorthands that exist</p>
+<h3 id="character-class">1. Character Class (<span
+class="math inline">[ ]</span>)</h3>
+<p>It represents a range of acceptable characters (it is inclusive)
+[[A-C] = (A |B|C)] similarly, [[0-9] = (0|1|2|3|4|5|6|7|8|9)]</p>
+<p>You can also <strong>combine ranges</strong> (have more than one
+range), [[A-C x-z] = (A|B|C|x|y|z)]</p>
+<h3 id="arbitrary-characters-.">2. Arbitrary Characters (<span
+class="math inline">.</span>)</h3>
+<p>An unknown character can be represented with a period ( . ). It is
+any character in <span class="math inline"><em>Σ</em></span>. For
+example, if <span
+class="math inline"><em>Σ</em> = {<em>a</em>, <em>b</em>, <em>c</em>}</span>
+<span
+class="math display"><em>a</em>.<em>c</em> = (<em>a</em><em>a</em><em>c</em>|<em>a</em><em>b</em><em>c</em>|<em>a</em><em>c</em><em>c</em>)</span></p>
+<h3 id="exclusive-character-class-wedge-...">3. Exclusive Character
+Class (<span class="math inline">[<sup>∧</sup>...]</span>)</h3>
+<p>When placed in front of a character class, it indicates any character
+in that range cannot occur at that position. It effectively excludes the
+range. In general, we can say <span
+class="math display">[<sup>∧</sup><em>D</em>−<em>Z</em>] = [<em>A</em>−<em>C</em>].</span></p>
+<h3 id="self-concatenation">4. Self Concatenation (<span
+class="math inline">+</span>)</h3>
+<p><span class="math inline"><em>r</em>+</span> represents the
+concatenation with itself any finite number of times. Symbolically,
+<span class="math display"><em>r</em> +  = <em>r</em><em>r</em>*</span>
+Notice that <span class="math inline"><em>r</em>+</span> can never be
+empty, unlike the Kleene Closure.</p>
+<h3 id="single-occurrence">5. Single Occurrence (<span
+class="math inline">?</span>)</h3>
+<p><span class="math inline"><em>r</em>?</span> means either 1 or 0
+occurrences of r. More formally, <span
+class="math display"><em>r</em>? = (<em>λ</em>|<em>r</em>)</span> It
+limits the expression to be singular.</p>
+<h3 id="limited-self-concatenation-n">6. Limited Self-Concatenation
+(<span class="math inline">{<em>n</em>}</span>)</h3>
+<p>For <span
+class="math inline"><em>m</em>, <em>n</em> ∈ ℤ<sup>+</sup></span>, and
+<span class="math inline"><em>m</em> ≤ <em>n</em></span>, <span
+class="math display"><em>r</em>{<em>n</em>} denotes the concatenation of
+r with itself exactly n times</span> and <span
+class="math display"><em>r</em>{<em>m</em>, <em>n</em>} denotes the
+concatenation of r with itself from between m to n times</span> Notice
+that concatenation always starts with the base case, which is <span
+class="math inline"><em>r</em></span> itself. - {exact}, {min, }, {min,
+max}</p>
+<h3 id="general-character-.">7. General character (<span
+class="math inline">.</span>)</h3>
+<p>It can be any character in <span
+class="math inline"><em>Σ</em></span> - <span
+class="math inline">.<em>a</em><em>t</em></span>: <span
+class="math inline"><em>c</em><em>a</em><em>t</em></span>, <span
+class="math inline"><em>b</em><em>a</em><em>t</em></span>, <span
+class="math inline"><em>g</em><em>a</em><em>t</em></span>, <span
+class="math inline">%<em>a</em><em>t</em></span></p>
+<h3 id="special-characters">8. Special characters (\)</h3>
+<ul>
+<li><span class="math inline"> ∖ <em>d</em></span>, any digit</li>
+<li><span class="math inline"> ∖ <em>D</em></span>, any non digit</li>
+<li><span class="math inline"> ∖ <em>s</em></span>, space</li>
+<li><span class="math inline"> ∖ <em>S</em></span>, non white space</li>
+<li>… Back slash can also be used to “escape” special characters such as
+<span class="math inline">.</span>, <span class="math inline">+</span>,
+<span class="math inline">*</span> …</li>
+</ul>
+<h3 id="parenthesis">9. Parenthesis ()</h3>
+<p>These are used to group sets of characters together, they are
+<strong>DIFFERENT</strong> from square brackets (those represent a
+range)</p>
+<h3 id="pipe-symbol">10. Pipe symbol (|)</h3>
+<p>This acts as an <strong>XOR</strong>. Let that sink in</p>
+<p><br></p>
+<blockquote>
+<p>examples please sadadw</p>
+<p>adwawd adawd</p>
+</blockquote>
+<h2 id="finite-state-automata">Finite-State Automata</h2>
+<p>The ciructs we discussed in module one are combination circuits: the
+inputs are directly combined to produce an output. However, there are
+cases where the next output is dependent on the previous state of the
+system. Where we want ciruits to behave sequentially.</p>
+<p><strong>Finite-state Automata</strong>: an idealized machine that
+represents a sequential circuit. The current state of the circuit is
+dependent on the previous state of the circuit (look at what the value
+is before).</p>
+<h3 id="example-a-simple-vending-machine">Example: a simple vending
+machine</h3>
+<p>Suppose we have a vending machine that sells drinks of $1. If we can
+only deposit quarters and half-dollars, we can describe the internal
+operation of the machine using the followin diagram</p>
+<p><img src = "assets/vending.png"></img></p>
+<p>Each machine represents the state of the machine – the amount money
+that it can hold. The directed arrows point to the next possible state
+from the current state depending on the action. There is also a final
+state – when the machine deposits a drink. The machine also begins with
+no money inside.</p>
+<p>The operation of the machine can also be represented as a “next-state
+table”:</p>
+<p><img src = "assets/nstable.png"></img> - the left most column is the
+possible machine states - there is a colmn for each possible interaction
+- each cell in those columns point to the next state given the current
+state</p>
+<ul>
+<li>the final row is the target state.</li>
+</ul>
+<p>Although we use vending machines as an example, computers are
+probably the most important type of DFAs. In essence, a computer just
+computes the next possible state depending on the input.</p>
+<h2 id="definition-of-a-finite-state-automaton">Definition of a
+Finite-State Automaton</h2>
+<p>In general a finite-state automaton consists of two parts: a list of
+the possible state, and a function to compute the next state given the
+current state and input. This can be formlized below:</p>
+<p>A <strong>finite-state automaton</strong> <span
+class="math inline"><em>A</em></span> consists of 5 parts: 1. A finite
+set <span class="math inline"><em>I</em></span>, called the
+<strong>input alphabet</strong>, of input symbols 2. A finite set <span
+class="math inline"><em>S</em></span> of <strong>states</strong> that
+the automaton can assume 3. A designated state <span
+class="math inline"><em>s</em><sub>0</sub></span> called the
+<strong>intital state</strong> 4. A designated set of states called the
+set of <strong>accepting states</strong> (final states that produce
+wanted result) 5. A <strong>next-state function</strong> <span
+class="math inline"><em>N</em> : <em>S</em> × <em>I</em> → <em>S</em></span>
+that associates a <strong>next-state</strong> to ever pair of
+“<strong>current-state</strong>” and “<strong>current-input</strong>”
+(basically a function that determines what next-state is produced
+depending on current state and input). For <span
+class="math inline"><em>s</em> ∈ <em>S</em>, <em>m</em> ∈ <em>I</em></span>,
+the function <span
+class="math inline"><em>N</em>(<em>s</em>,<em>m</em>)</span> is the
+state that <span class="math inline"><em>A</em></span> goes to if <span
+class="math inline"><em>s</em></span> is the state and <span
+class="math inline"><em>m</em></span> is the input.</p>
+<p>A <strong>DFA (Deterministic Finite-state Automaton)</strong> is
+formally defined as a <strong>5-tuple</strong> (<span
+class="math inline"><em>Σ</em>, <em>S</em>, <em>s</em><sub><em>o</em></sub>, <em>F</em>, <em>δ</em></span>):
+- <span class="math inline"><em>Σ</em></span>: a finite set of
+characters (input alphabet) - <span
+class="math inline"><em>S</em></span>: a finite set of states - <span
+class="math inline"><em>s</em><sub><em>o</em></sub> ∈ <em>S</em></span>:
+the intitial state - <span
+class="math inline"><em>F</em> ⊆ <em>S</em></span>: the set of accepting
+states - <span
+class="math inline"><em>δ</em> : <em>S</em> × <em>Σ</em> → <em>S</em></span>:
+the transition function We can write a regular expression for any DFA!!
+And we can construct a sequential circuit from a DFA.</p>
+<p><strong>State-transition diagram</strong>: a diagram that shows the
+stat transitions of an automaton (similar to the vending machine
+example). Arrows pointing to the next state are labed with the
+correspond <strong>input</strong> that it represents. <span
+class="math inline"><em>s</em><sub>0</sub></span> is demonstrated with
+an empty arrow pointing to a state circle. Accepting states are
+represented with double circles.</p>
+<p><strong>Next-state table</strong>: A table that shows the values of
+the next-state function for all possible states and inputs. The input is
+denoted by an empty arrow and the accepting states are denoted with a
+double circle.</p>
+<h2 id="nfa-non-deterministic-finite-state-automaton">NFA
+(non-deterministic finite state automaton)</h2>
+<p>They are similar to a DFA except: - there can be multiple starting
+states - there can be multiple arrows with the same label as a leaving
+state - there can be arrows <span class="math inline"><em>ϵ</em></span>
+that we can follow without reading the next input character - they can
+transition between states without a character</p>
+<p>An NFA will accept a string if at least one sequence of choices leads
+to an accepting state - All concurrent paths are traced
+<strong>simultaneously</strong>!</p>
+<p>Every DFA is an NFA but not all NFAs are DFA <span
+class="math inline"><em>D</em><em>F</em><em>A</em> ⊆ <em>N</em><em>F</em><em>A</em></span></p>
+<p><img src = "assets/NFA.png"></img> describes <span
+class="math inline"><em>ϵ</em>|<em>a</em><em>b</em>|(<em>a</em><em>b</em><em>a</em>) + <em>a</em></span></p>
+<h2 id="making-dfas-for-regex">Making DFAs for regex</h2>
+<ul>
+<li>create states for progress milestones or required features</li>
+<li>split progress paths when encountering “or” (branching)</li>
+<li>break it into parts and try things</li>
+<li>breaking requirements: 1. reset or 2. dead state</li>
+<li>Requirement acheived: progress DFA into next important state</li>
+<li>doesnt break or achieve: self loop until further progress is
+made</li>
+</ul>
+<blockquote>
+<p>Example: strings over the alphabet <span
+class="math inline"><em>Σ</em> = {<em>a</em>, <em>b</em>}</span> that
+start with “aa”, contain “bbb” and end with “aaa” or “abb”</p>
+<p><span
+class="math inline"><em>a</em><em>a</em>. * <em>b</em><em>b</em><em>b</em>. * (<em>a</em><em>a</em><em>a</em>|<em>a</em><em>b</em><em>b</em>)</span></p>
+</blockquote>
+<h1 id="turing-machines">Turing Machines</h1>
+<p>A mathematical model that defines an abstract machine - manipulates
+symbols on a tape according to a table of rules - they can construct any
+logically computable statement</p>
+<p>It is a DFA with a tape attached to it - the tape in infinite - the
+head can move one step to the left or right - it can read/write one
+position of the tape - each position can contain one element of the
+working alphabet - there is a special symnbol to represent a blank
+position: <span class="math inline">▫</span></p>
+<h2 id="controlling-movement">Controlling movement</h2>
+<p>A DFA can control the head and read/write by the following format -
+&lt;read&gt; / &lt;write&gt;, &lt;move&gt;</p>
+<blockquote>
+<p>Examples:</p>
+<p>1/0, R : Reads value 1, replaces it with 0, and moves the head to the
+right</p>
+<p><span class="math inline">▫</span>/1, L : Reads a blank value,
+replaces it with a 1, and moves the head to the left</p>
+<p><span class="math inline">▫</span>/<span
+class="math inline">▫</span>, R : Reads a blank value, replaces it with
+a blank value, and moves the head to the right</p>
+<p>0/1, L: Reads value 0, replaces it with a 1, and moves the head to
+the left</p>
+</blockquote>
+<p>A DFA controls the tape, moving its head and reading/writing values
+Each arrow in the DFA will have 3 operations – read the value of the
+tape – write a value on the tap – move the head left or right</p>
+<p>A turing machine will stop if it reaches an accepting state (it can
+also never stop or keep on looping infinitely)
+<img src = "assets/turing.png"></p>
+<h1 id="sequential-circuits">Sequential Circuits</h1>
+<p>Output is based on the current inputs AND the previous outputs (they
+do be looping) - this acts as memory!! allows for more complex
+operations Feedback loops connect the output to the input of earlier
+devices</p>
+<p>“normal circuits” or Combinational circuits: - the output is
+generated based only on the current inputs</p>
+<h2 id="dfa-to-sequential-circuit">DFA to Sequential Circuit</h2>
+<p>DFAs can be translate into sequential circuits - Enumerate each state
+as a binary number. Each bit of the binary number will be handled by one
+<strong>flip flop</strong> device - 2 states =&gt; 1 bit — <span
+class="math inline">log<sub>2</sub>(#<em>s</em><em>t</em><em>a</em><em>t</em><em>e</em><em>s</em>)</span></p>
+<ul>
+<li>A state table is created to map the transitions from each state
+<ul>
+<li>the output of these states will be the output of the flipflop after
+one clock cycle.</li>
+</ul></li>
+<li>Calculate the flip flop inputs (as a combinational circuit
+proposition) required to make the transitions in the state table</li>
+</ul>
+<p>BOom it WILL show up in the LABB</p>
+<h2 id="worksheet">Worksheet</h2>
+<p>2.(a) <code>(..)+</code></p>
+<p>2.(b) <code>([1-9]\d*|0)\+([1-9]\d*|0)=([1-9]\d*|0)</code></p>
+<p>2.(c) <code>(([0-1][0-9])|(2[0-3])) :[0-5] [0-9]</code></p>
+<p>2.(d) <code>([10]*1101[10]*|[10]*1111[10]*)</code></p>
+<blockquote>
+<p>EXAMPLEPMPSLMPMEPMSPMS: idk how to do these ngl</p>
+</blockquote>

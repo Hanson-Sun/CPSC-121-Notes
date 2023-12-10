@@ -1,0 +1,197 @@
+<h1 id="module-2-propositional-and-conditional-logic">Module 2:
+Propositional and Conditional Logic</h1>
+<h2 id="goals">Goals</h2>
+<ol type="1">
+<li><p>Translate back and forth between simple natural language
+statements and propositional logic, now with conditionals and
+biconditionals.</p></li>
+<li><p>Evaluate the truth of propositional logical statements that
+include conditionals and biconditionals using truth tables.</p></li>
+<li><p>Given a propositional logic statement and an equivalence rule,
+apply the rule to create an equivalent statement.</p></li>
+<li><p>Explore alternate forms of propositional logic statements by
+application of equivalence rules, especially in order to simplify
+complex statements or massage statements into a desired form.</p></li>
+<li><p>Build computational systems to solve the 7- or 4-segment LED
+displays, using both propositional logic expressions and equivalent
+digital logic circuits.</p></li>
+</ol>
+<h2 id="definitions">Definitions</h2>
+<p>If p and q are <strong>statement variables</strong>, the conditional
+of q by p is “If p then q” or “p implies q” and is denoted <span
+class="math inline"><em>p</em> ⟹ <em>q</em></span>. It is false when
+<strong>p is true and q is false</strong>; otherwise it is true.</p>
+<p>In a conditional, we call <strong>p the hypothesis (or
+antecedent)</strong> of the conditional and <strong>q the conclusion (or
+consequent)</strong>.</p>
+<p>Given statement variables p and q, the biconditional of p and q is
+<strong>“p if, and only if, q”</strong> and is denoted <span
+class="math inline"><em>p</em> ⇔ <em>q</em></span>. It is
+<strong>true</strong> if both p and q <strong>have the same truth
+values</strong> and is <strong>false</strong> if p and q have
+<strong>opposite truth values</strong>. The words if and only if are
+sometimes abbreviated <strong>iff</strong>.</p>
+<h2 id="conditional-statements">Conditional Statements</h2>
+<p><span class="math inline">⟹</span> is just like any other connective
+(<span class="math inline">∨</span>, <span class="math inline">∧</span>)
+- distributive laws applies to <span class="math inline">⟹</span> !!
+&gt; If 4,686 is divisible by 6, then 4,686 is divisible by 3<br />
+&gt; If P, then Q<br />
+&gt; <span class="math inline"><em>P</em> ⟹ <em>Q</em></span> &gt; &gt;
+P is the <strong><em>Hypothesis</em></strong> and Q is the
+<strong><em>Conclusion</em></strong> &gt; &gt; If P is false, the
+conditional is by default <strong>true</strong> (vacuously true). If P
+is false, it doesnt matter whether Q is false or not, hence the
+statement will be <strong>true</strong><br />
+&gt; <img src = "assets/ttableif.png" width ="200px"></img></p>
+<h2 id="representation-of-if-then-as-or">Representation of If-Then as
+Or</h2>
+<p><span
+class="math display"><em>P</em> ⟹ <em>Q</em> ≡ ¬<em>P</em> ∨ <em>Q</em></span>
+&gt; Example: Rewrite the following statement in if-then form.<br />
+&gt; Either you get to work on time or you are fired<br />
+&gt; <span class="math inline">→</span> If you do not get to work on
+time, then you are fired. &gt;</p>
+<h2 id="the-negation-of-a-conditional-statement">The Negation of a
+Conditional Statement</h2>
+<p>The negation of “if p then q” is logically equivalent to “p and not
+q.” <span
+class="math display">¬(<em>P</em>⟹<em>Q</em>) ≡ <em>P</em> ∧ ¬<em>Q</em></span>
+&gt; Example: Write negations of the following statements<br />
+&gt; If my car is in the repair shop, then I cannot get to class<br />
+&gt; <span class="math inline">→</span> My car is in the repair shop and
+I can get to class.</p>
+<h2 id="the-contrapositive-of-a-conditional-statement">The
+Contrapositive of a Conditional Statement</h2>
+<p>A conditional statement is logically equivalent to its
+contrapositive. <span
+class="math display"><em>P</em> ⟹ <em>Q</em> ≡ ¬<em>Q</em> ⟹ ¬<em>P</em></span>
+&gt; Example: Write the contrapositive for the following statement &gt;
+If Howard can swim across the lake, then Howard can swim to the
+island<br />
+&gt; <span class="math inline">→</span> If Howard cannot swim to the
+island, then Howard cannot swim across the lake</p>
+<h2 id="the-converse-and-inverse-of-a-conditional-statement">The
+Converse and Inverse of a Conditional Statement</h2>
+<p>These two variants of the conditional are <strong>NOT</strong>
+logically equivalent.<br />
+For the conditional statement <span
+class="math inline"><em>P</em> ⟹ <em>Q</em></span> 1.
+<strong>Converse</strong>: If Q then P, <span
+class="math inline"><em>Q</em> ⟹ <em>P</em></span> 2.
+<strong>Inverse</strong>: If not P then not Q, <span
+class="math inline">¬<em>P</em> ⟹ ¬<em>Q</em></span> &gt; Example: write
+the converse and inverse of the folloing statement<br />
+&gt; If Howard can swim across the lake, then Howard can swim to the
+island<br />
+&gt; <span class="math inline">→</span> Converse: If Howard can swim to
+the island, then Howard can swim across the lake.<br />
+&gt; <span class="math inline">→</span> Inverse: If Howard cannot swim
+across the lake, then Howard cannot swim to the island.</p>
+<h3 id="note-that">Note that:</h3>
+<ol type="1">
+<li>A conditional statement and its converse are not logically
+equivalent.</li>
+<li>A conditional statement and its inverse are not logically
+equivalent.</li>
+<li>The <strong>converse and the inverse</strong> of a conditional
+statement are <strong>logically equivalent</strong> to each other.</li>
+</ol>
+<h2 id="only-if-and-the-biconditional">Only if and the
+Biconditional</h2>
+<p>“P only if Q” means that P occurs only if Q occurs also. This means
+if Q does not occur, then P also <strong>does not</strong> occur. &gt;
+If P and Q are statements &gt; <span class="math display">“P only if Q"
+means “If not Q then not P"</span> &gt; which is equivalently written as
+the contrapositive of &gt; <span class="math display">“If P then
+Q"</span> &gt;</p>
+<blockquote>
+<p><strong>Example</strong>: convert the only if statement to if
+then<br />
+John will break the world’s record for the mile run only if he runs the
+mile in under four minutes<br />
+<span class="math inline">→</span> If John does not run the mile in
+under four minutes, then he will not break the world’s record</p>
+<h3 id="if-and-only-if">If and Only IF</h3>
+</blockquote>
+<p>The biconditional “P if and only if Q” is denoted as <span
+class="math display"><em>P</em> ⇔ <em>Q</em> ≡ (<em>P</em>⟹<em>Q</em>) ∧ (<em>Q</em>⟹<em>P</em>) ≡ (<em>P</em>∨<em>Q</em>) ∧ ¬(<em>P</em>∧<em>Q</em>)</span>
+In iff the conditional in <strong>BOTH</strong> directions are true.
+Check <a href="symbols.md">connectives</a> for more details.</p>
+<p><img src = "assets/ttableiff.png" width ="200px"></img></p>
+<blockquote>
+<p>Example: Rewrite the following statement as a conjunction of two
+if-then statements:<br />
+This computer program is correct if, and only if, it produces correct
+answers for all possible sets of input data.<br />
+<span class="math inline">→</span> If this program is correct, then it
+produces the correct answers for all possible sets of input data; and if
+this program produces the correct answers for all possible sets of input
+data, then it is correct.</p>
+</blockquote>
+<h2 id="necessary-and-sufficient-conditions">Necessary and Sufficient
+Conditions</h2>
+<blockquote>
+<p>If r and s are statements - r is a sufficient condition for s means
+“if r then s.” - r is a necessary condition for s means “if not r then
+not s.” - “if s then r” - r is a necessary and sufficient condition
+means “r if and only iff s”</p>
+</blockquote>
+<h3 id="converting-a-sufficient-condition-to-if-then-form">Converting a
+Sufficient Condition to If-Then Form</h3>
+<blockquote>
+<p>Example: Rewrite the following statement in the form “If A then
+B”:<br />
+Pia’s birth on U.S. soil is a sufficient condition for her to be a U.S.
+citizen.<br />
+<span class="math inline">→</span> If Pia is born on U.S. soil, then she
+is a U.S. citizen.</p>
+</blockquote>
+<h3 id="converting-a-necessary-condition-to-if-then-form">Converting a
+Necessary Condition to If-Then Form</h3>
+<blockquote>
+<p>Example: Use the contrapositive to rewrite the following statement in
+two ways:<br />
+George’s attaining age 35 is a necessary condition for his being
+president of the United States.<br />
+<span class="math inline">→</span> If George is the president of the
+United States, then he is 35 years old<br />
+<span class="math inline">→</span> If George is not 35 years old, he is
+not the president of the United States.</p>
+</blockquote>
+<h2 id="logical-equivalence-proofs">Logical Equivalence Proofs</h2>
+<ul>
+<li>state the expression you want to prove</li>
+<li>indicate the beginning with proof</li>
+<li>start with one side and make it equal to the other
+<ul>
+<li>one step at a time <span class="math inline">→</span> with
+justification</li>
+<li>usually simplify the more complex side to math the simpler one</li>
+<li>indicate the end with proof with <strong>QED</strong> or <span
+class="math inline">□</span></li>
+</ul></li>
+</ul>
+<p>Only one rule per line! except for - DeMorgan and Double Negative -
+Associative + Commutative (grouping and rearranging) - then same law is
+applied on independent sections</p>
+<h2 id="summary-of-section">SUMMARY OF SECTION</h2>
+<p>For the conditional statement <span
+class="math inline"><em>P</em> ⟹ <em>Q</em> ≡ ¬<em>P</em> ∨ <em>Q</em></span>
+- It is <strong>false</strong> if and only if <strong>P is false and Q
+is true</strong> - same as “P only if Q” - Equivalent with its
+<strong>contrapositive</strong> <span
+class="math inline">¬<em>Q</em> ⟹ ¬<em>P</em></span> -
+<strong>NOT</strong> equivalent with - Converse: <span
+class="math inline"><em>Q</em> ⟹ <em>P</em></span> - Inverse: <span
+class="math inline">¬<em>P</em> ⟹ ¬<em>Q</em></span> - The Converse is
+equivalent to the Inverse</p>
+<p>For the Unconditional statement <span
+class="math inline"><em>P</em> ⇔ <em>Q</em></span> - It is false only
+when P and Q are different - Equivalent with <span
+class="math inline">(<em>P</em>⟹<em>Q</em>) ∧ ¬(<em>Q</em>⟹<em>P</em>)</span>
+and <span class="math inline"><em>P</em> ⊕ <em>Q</em></span></p>
+<p>If r and s are statements - r is a sufficient condition for s means
+“if r then s.” - r is a necessary condition for s means “if not r then
+not s.” - “if s then r” - r is a necessary and sufficient condition
+means “r if and only if s”</p>

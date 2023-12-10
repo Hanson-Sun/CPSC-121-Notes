@@ -1,0 +1,485 @@
+<h1 id="direct-proofs">Direct Proofs</h1>
+<h2 id="goals">Goals:</h2>
+<ol type="1">
+<li><p><strong>Apply Universal Instantiation</strong>, <strong>Universal
+Modus Ponens,</strong> and <strong>Universal Modus Tollens</strong> to
+predicate logic statements that correspond to the rules’ premises to
+infer statements implied by the premises.</p></li>
+<li><p>Identify which strategy use to <strong>prove a statement</strong>
+based on its <strong>quantifiers</strong>.</p></li>
+<li><p>Devise and attempt multiple different, appropriate <strong>proof
+strategies</strong>.</p></li>
+<li><p>Practice <strong>direct proofs</strong> and identify common
+strategies used on those proofs</p></li>
+</ol>
+<h2 id="arguments-with-quantified-statements">Arguments with Quantified
+Statements</h2>
+<h3 id="universal-instantiation"><strong>Universal
+Instantiation</strong></h3>
+<p>If a property is true for <strong>everything</strong> in a set, then
+it is true for <strong>any particular</strong> thing in the set. &gt; A
+famous example: &gt; <span class="math display">$$\begin{align*}
+    &amp;\text{All men are mortal}\\
+    &amp;\text{Socrates is a man}\\
+    \therefore \;&amp; \text{Socrates is a mortal}
+\end{align*}$$</span></p>
+<p>### <strong>Universal</strong> Modulus Ponens we can combine
+universal statements with modulus ponens</p>
+<p><span class="math display">$$\begin{align*}
+    &amp;\forall x \in S, P(x) \implies Q(x) \\
+    &amp;P(a) \text{ for some } a\in S\\
+    \therefore \;&amp; Q(a)
+\end{align*}$$</span></p>
+<h3 id="universal-modulus-tollens"><strong>Universal</strong> Modulus
+Tollens</h3>
+<p>SImilarly, we can also combine universal statement with modulus
+tollens</p>
+<p><span class="math display">$$\begin{align*}
+    &amp;\forall x \in S, P(x) \implies Q(x) \\
+    &amp;\lnot Q(a) \text{ for some } a\in S\\
+    \therefore \;&amp; \lnot P(a)
+\end{align*}$$</span></p>
+<h2 id="validity-with-quantified-statements">Validity with Quantified
+Statements</h2>
+<p>Recall that validity refers to the validity of form. ie, if all the
+premises are true, the conclusion must be true. However, if the premises
+are false, the conclusion does <strong>not</strong> need to be true.</p>
+<p>In general, we needs to verify that the conclusion is true if we
+suppose the premises are true.</p>
+<blockquote>
+<p>Example: prove that universal modulus ponens is valid<br />
+To prove that this form of argument is valid, <strong>suppose the major
+and minor premises are both true</strong>. [We must show that the
+conclusion “Q(a)” is also true.] By the minor premise, <strong>P(a) is
+true for a particular value of a</strong>. By the major premise and
+universal instantiation, the statement <strong>“If P(a) then
+Q(a)”</strong> is <strong>true for that particular a</strong>. But by
+modus ponens, since the statements <strong>“If P(a) then Q(a)” and
+“P(a)” are both true</strong>, it follows that** Q(a) is true also**.
+[This is what was to be shown.]</p>
+</blockquote>
+<h3 id="proof-of-validity-using-diagrams">Proof of Validity using
+Diagrams</h3>
+<ol type="1">
+<li>use diagrams to represent subsets and supersets</li>
+<li>determine where the particular value lies relative to those
+sets</li>
+<li>determine whether the local of the particular value is indefinite
+<ul>
+<li>indefinite means the argument is not valid; definite means the
+argument is valid.</li>
+</ul></li>
+</ol>
+<blockquote>
+Example: Consider the following statement <span
+class="math display">$$\begin{align*}
+&amp;\text{All humans are mortal}\\
+&amp;\text{Zeus is not mortal}\\
+\therefore \; &amp;\text{Zeus is not a human}
+\end{align*}$$</span> We can represent the relationship using the
+following diagram
+<center>
+<img src = "assets/zeus.jpg">
+</center>
+<p>everything can only fit together one way, hence the argument is
+valid<br />
+(this is an example of modulus tollens)</p>
+</blockquote>
+<p></br> Let’s look at an example of Invalid reasoning</p>
+<p></br></p>
+<blockquote>
+Example: Consider the following argument <span
+class="math display">$$\begin{align*}
+&amp;\text{All humans are mortal}\\
+&amp;\text{Felix is not mortal}\\
+\therefore \; &amp;\text{Felix is a human being}
+\end{align*}$$</span> Similarly, we can express the argument using the
+following diagram:
+<center>
+<img src = "assets/felix.jpg">
+</center>
+<p>Notice that Felix can be in various positions (it is
+indeterminate)<br />
+As such, we can say this argument is invalid. (this is an example of the
+converse fallacy)</p>
+</blockquote>
+<h2 id="fallacies">Fallacies</h2>
+<p>Just like how simple forms of arguments can have fallacies, universal
+arguments can also have similar fallacies.</p>
+<h3 id="converse-fallacy">Converse Fallacy</h3>
+<p><span class="math display">$$\color{red}\begin{align*}
+    &amp;\forall x \in S,  P(x) \implies Q(x) \\
+    &amp;Q(a) \text{ for } a \in S \\
+    \therefore \; &amp; P(x)
+\end{align*}$$</span></p>
+<h3 id="inverse-fallacy">Inverse Fallacy</h3>
+<p><span class="math display">$$\color{red}\begin{align*}
+    &amp;\forall x \in S,  P(x) \implies Q(x) \\
+    &amp;\lnot P(a) \text{ for } a \in S \\
+    \therefore \; &amp; \lnot Q(x)
+\end{align*}$$</span></p>
+<h2 id="additional-forms-of-argument">Additional Forms of Argument</h2>
+<p>we can use the inference rules in <a href="module_4.md">module 4</a>
+and convert them into universal form, below is the example of the
+universal transitivity rule.</p>
+<h3 id="universal-transitivity">Universal Transitivity</h3>
+<p><span class="math display">$$\begin{align*}
+    &amp;\forall x, P(x) \implies Q(x) \\
+    &amp;\forall x, Q(x) \implies R(x) \\
+    \therefore \; &amp; \forall x, P(x) \implies R(x)
+\end{align*}$$</span></p>
+<h1 id="introduction-to-direct-proofs">Introduction to Direct
+Proofs</h1>
+<p>we gotta prove some things with math, well we need to learn the
+fundamental math first :smile:.</p>
+<h2 id="even-odd-prime-and-composite-numbers">Even, Odd, Prime, and
+Composite Numbers</h2>
+<h3 id="even-and-odd">Even and Odd</h3>
+<p>An integer is even, if and only if, it is divisible by 2. Likewise,
+an integer is odd, if and only if, it is not divisible by 2.
+Mathematically, <span class="math display">$$\begin{align*}
+    n \text{ is even } &amp;\iff n = 2k \text{ for some integer } k\\
+    n \text{ is odd } &amp;\iff n = 2k + 1 \text{ for some integer } k
+\end{align*}$$</span></p>
+<h3 id="prime-and-composite">Prime and Composite</h3>
+<p>An integer is <strong>prime</strong> if, and only if, <span
+class="math inline"><em>n</em> &gt; 1</span> and for all positive
+integers <span class="math inline"><em>r</em></span> and <span
+class="math inline"><em>s</em></span>, if <span
+class="math inline"><em>n</em> = <em>r</em><em>s</em></span>, then
+either <span class="math inline"><em>r</em></span> or <span
+class="math inline"><em>s</em></span> equals <span
+class="math inline"><em>n</em></span> (the factors of <span
+class="math inline"><em>n</em></span> are only <span
+class="math inline"><em>n</em></span> and <span
+class="math inline">1</span>). Am integer <span
+class="math inline"><em>n</em></span> is <strong>composite</strong> if,
+and only if, <span class="math inline"><em>n</em> &gt; 1</span> and
+<span class="math inline"><em>n</em> = <em>r</em><em>s</em></span> with
+<span class="math inline">1 &lt; <em>r</em> &lt; <em>n</em></span> and
+<span class="math inline">1 &lt; <em>s</em> &lt; <em>n</em></span>
+(there exists prime factors for <span
+class="math inline"><em>n</em></span>). Symbolically, we can say <span
+class="math display">$$\begin{align*}
+    n \text{ is prime} &amp;\iff \forall (r, s) \in \mathbb{Z},\; n = rs
+\implies (r = 1 \land s = n) \lor (r = n \land s=1)\\
+    n \text{ is composite} &amp;\iff \exist (r, s) \in \mathbb{Z} \text{
+st. } (n = rs) \land (1 &lt; r &lt; n) \land (1 &lt; s &lt; n)
+\end{align*}$$</span></p>
+<h2 id="proving-existential-statements">Proving Existential
+Statements</h2>
+<h3 id="constructive-proof-of-existence">Constructive Proof of
+Existence</h3>
+<p>Just find a case such that the statement is true ngl.</p>
+<h2 id="disproving-existential-statement">Disproving Existential
+Statement</h2>
+<p>Show that the negation is true, or symbolically, for <span
+class="math display">$$\exist x \in D, P(x) \implies Q(x)$$</span> we
+need to show that the following is true <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>P</em>(<em>x</em>) ∧ ¬<em>Q</em>(<em>x</em>).</span></p>
+<h2 id="disproving-universal-statements-with-counter-example">Disproving
+Universal statements with Counter Example</h2>
+<p>to disprove a statement of the form <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+we just need to show the negation is true: <span
+class="math display">$$\exist x \in D, P(x) \land \lnot
+Q(x).$$</span></p>
+<h2 id="proving-universal-statements">Proving Universal Statements</h2>
+<h3 id="method-of-exhaustion">Method of Exhaustion</h3>
+<p>literally go through every element in the set and show that it works.
+This is BAD and it wont work most of the time.</p>
+<h2 id="generalizing-from-the-generic-particular">Generalizing from the
+Generic Particular</h2>
+<p>To show that <em>every element</em> of a set satisfies a certain
+property, suppose <span class="math inline"><em>x</em></span> is a
+<em>particular but arbitrarily</em> chosen element of the set, and show
+that <span class="math inline"><em>x</em></span> satisfies the
+property.</p>
+<p>And symbolically, - Show that <span
+class="math inline">∀<em>x</em> ∈ <em>D</em></span> satisfies <span
+class="math inline"><em>P</em>(<em>x</em>)</span> - choose some
+arbitrary <span class="math inline"><em>x</em> ∈ <em>D</em></span> and
+demonstrate that is satisfies <span
+class="math inline"><em>P</em>(<em>x</em>)</span></p>
+<h2 id="method-of-direct-proof">Method of Direct Proof</h2>
+<ol type="1">
+<li><p>Express the statement to be proved in the form, <span
+class="math inline">∀<em>x</em> ∈ <em>D</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span></p></li>
+<li><p>Begin by <em>supposing</em> <span
+class="math inline"><em>x</em></span> is a particular but arbitrarily
+chosen member of <span class="math inline"><em>D</em></span> for which
+the hypothesis <span class="math inline"><em>P</em>(<em>x</em>)</span>
+is true. (Suppose …)</p></li>
+<li><p>Show that <span class="math inline"><em>Q</em>(<em>x</em>)</span>
+is true by using definition, established results, and inference
+rules.</p></li>
+</ol>
+<h2 id="existential-instantiation">Existential Instantiation</h2>
+<p>If the existence of a certain kind of object is assumed or has been
+deduced, then it can be given a name, as long as that name is not
+currently being used to refer to something else in the same discussion.
+- it literally means you can give an arbitrary object a name if the name
+is not already taken</p>
+<h2 id="proof-by-cases">Proof by cases</h2>
+<p>To prove the statement of the form “If <span
+class="math inline"><em>A</em><sub>1</sub></span> or <span
+class="math inline"><em>A</em><sub>2</sub></span> or … or <span
+class="math inline"><em>A</em><sub><em>n</em></sub></span> then <span
+class="math inline"><em>C</em></span>”, prove all of the following <span
+class="math display">$$\begin{align*}
+    A_1 \implies C, \\
+    A_2 \implies C, \\
+    \vdots \\
+    A_n \implies C.
+\end{align*}$$</span> This process shows that <span
+class="math inline"><em>C</em></span> is true regardless of which <span
+class="math inline"><em>A</em></span> happens to be the case</p>
+<h2 id="general-direction-for-writing-proofs">General Direction for
+Writing Proofs</h2>
+<ol type="1">
+<li>copy the statement of the theorem which is to be proved</li>
+<li>clearly mark the beginning with the word “Proof”</li>
+<li>Make the proof self-contained (it has all the info necessary to
+prove the statement, explain what the variables mean)</li>
+<li>Write the proof in complete grammatically correct sentences</li>
+<li>Keep the reader informed about the status of each statement in the
+proof (suppose, assume, we must show that …)</li>
+<li>Give a reason for each assertion in the proof</li>
+<li>Include “little words and phrases” that make your logic clear (such
+that, hence, therefore, it follows …)</li>
+<li>Display equations and inequalities</li>
+</ol>
+<h3 id="common-mistakes-dont-do-sobsobsobsobs">Common Mistakes (DON’T DO
+SOBSOBSOBSOBS)</h3>
+<ol type="1">
+<li>arguing from examples, examples do not generalize to the
+particular</li>
+<li>using the same letter to mean 2 different things</li>
+<li>jumping to a conclusion, its not justified!!</li>
+<li>confusion between “what is known” and “what is to be shown”, you
+can’t mix them up !!</li>
+<li>use “any” when it should be “some”</li>
+<li>misuse of the word “if”, remember if means <span
+class="math inline">⟹</span> and that has logic implications. “If” does
+not equal “Because”</li>
+</ol>
+<h1 id="theorems">Theorems</h1>
+<h2 id="definition-of-a-rational-number">Definition of a Rational
+Number</h2>
+<blockquote>
+<p>A real number is rational, if, and only if, it can be expressed as a
+quotient of two integers with a non-zero denominator. A number that
+isn’t rational is called <strong>irrational</strong>. Formally, <span
+class="math display">$$r \text{  is rational } \iff \exists\; a, b \in
+\mathbb{Z} \text{ such that } r = \frac{a}{b} \land b \not =
+0$$</span></p>
+</blockquote>
+<h3 id="integers-and-rational-numbers">Integers and Rational
+Numbers</h3>
+<blockquote>
+<p>Every integer is a rational number.</p>
+</blockquote>
+<h3 id="sum-of-rational-numbers">Sum of Rational Numbers</h3>
+<blockquote>
+<p>The sum of any two rational numbers is rational</p>
+</blockquote>
+<h3 id="zero-product-property">Zero Product Property</h3>
+<blockquote>
+<p>if neither <span
+class="math inline"><em>a</em>, <em>b</em> = 0</span>, then <span
+class="math inline"><em>a</em> × <em>b</em> ≠ 0</span></p>
+</blockquote>
+<h3 id="rational-irrational">Rational + Irrational</h3>
+<blockquote>
+<p>the sum of any rational and irrational numnber is irrational (this
+can be proved with contradiction)</p>
+</blockquote>
+<h2 id="divisibility">Divisibility</h2>
+<blockquote>
+<p>If <span class="math inline"><em>n</em></span> and <span
+class="math inline"><em>d</em></span> are integers, then</p>
+<p>  <span class="math inline"><em>n</em></span> is divisible by <span
+class="math inline"><em>d</em></span> if, and only if, <span
+class="math inline"><em>n</em></span> equals <span
+class="math inline"><em>d</em></span> times some integer and <span
+class="math inline"><em>d</em> ≠ 0</span>. (every integer divides 0)</p>
+<p>We can also say:<br />
+  <span class="math inline"><em>n</em></span> is a multiple of d<br />
+  d is a factor of n<br />
+  d is a divisor of n<br />
+  d divides n<br />
+</p>
+<p>the notation <span class="math inline"><em>d</em>|<em>n</em></span>
+is read “d divides n”. Symbolically, <span
+class="math display"><em>d</em>|<em>n</em> ⇔ ∃<em>k</em> ∈ ℤ such that
+<em>n</em> = <em>d</em><em>k</em> ∧ <em>d</em>¬ = 0</span> the notation
+<span class="math inline"><em>d</em><em>|̸</em><em>n</em></span> is read
+“d does not divide n”</p>
+</blockquote>
+<h3 id="positive-divisor-of-a-positive-integer">Positive Divisor of a
+Positive Integer</h3>
+<blockquote>
+<p>For all integers <span class="math inline"><em>a</em></span> and
+<span class="math inline"><em>b</em></span>, if <span
+class="math inline"><em>a</em></span> and <span
+class="math inline"><em>b</em></span> are positive and <span
+class="math inline"><em>a</em>|<em>b</em></span>, then <span
+class="math inline"><em>a</em> ≤ <em>b</em></span></p>
+</blockquote>
+<h3 id="divisors-of-1">Divisors of 1</h3>
+<blockquote>
+<p>the only divisors of 1 are 1 and -1</p>
+</blockquote>
+<h3 id="definition-of-indivisibility">Definition of indivisibility</h3>
+<blockquote>
+<p><span class="math inline">$\forall\; (n, d) \in \mathbb{Z}, \; d \not
+| n \iff \frac{n}{d} \not \in \mathbb{Z}$</span></p>
+</blockquote>
+<h3 id="transitivity-of-divisibility">Transitivity of Divisibility</h3>
+<blockquote>
+<p><span
+class="math inline"><em>a</em>|<em>b</em>∧<em>b</em>|<em>c</em> ⟹ <em>a</em>|<em>c</em></span></p>
+</blockquote>
+<h3 id="divisibility-by-a-prime">Divisibility by a Prime</h3>
+<blockquote>
+<p>Any integer <span class="math inline"><em>n</em> &gt; 1</span> is
+divisible by a prime number</p>
+</blockquote>
+<h2 id="fundamental-theorem-of-arithmetic">Fundamental Theorem of
+Arithmetic</h2>
+<blockquote>
+<p>Given any number <span class="math inline"><em>n</em> &gt; 1</span>,
+there exists a positive integer <span
+class="math inline"><em>k</em></span>, distinct prime number <span
+class="math inline">{<em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>, ..., <em>p</em><sub><em>k</em></sub>}</span>,
+and positive integers <span
+class="math inline">{<em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>, ..., <em>e</em><sub><em>k</em></sub>}</span>
+such that, <span
+class="math display"><em>n</em> = <em>p</em><sub>1</sub><sup><em>e</em><sub>1</sub></sup><em>p</em><sub>2</sub><sup><em>e</em><sub>2</sub></sup>...<em>p</em><sub><em>k</em></sub><sup><em>e</em><sub><em>k</em></sub></sup></span>
+Any prime factorized form of <span class="math inline"><em>n</em></span>
+will be identical to this, except maybe for the order.</p>
+</blockquote>
+<h3 id="prime-factorized-form">Prime Factorized Form</h3>
+<blockquote>
+<p>Given any number <span class="math inline"><em>n</em> &gt; 1</span>,
+the <strong>standard factored form</strong> of <span
+class="math inline"><em>n</em></span> is an expression of the form,
+<span
+class="math display"><em>n</em> = <em>p</em><sub>1</sub><sup><em>e</em><sub>1</sub></sup><em>p</em><sub>2</sub><sup><em>e</em><sub>2</sub></sup><em>p</em><sub>3</sub><sup><em>e</em><sub>3</sub></sup>...<em>p</em><sub><em>k</em></sub><sup><em>e</em><sub><em>k</em></sub></sup></span>
+where <span class="math inline"><em>k</em></span> is a positive integer,
+<span
+class="math inline">{<em>p</em><sub>1</sub>, <em>p</em><sub>2</sub>, ..., <em>p</em><sub><em>k</em></sub>}</span>
+are prime numbers, <span
+class="math inline">{<em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>, ..., <em>e</em><sub><em>k</em></sub>}</span>
+are positive integers, and <span
+class="math inline"><em>p</em><sub>1</sub> &lt; <em>p</em><sub>2</sub> &lt; ... &lt; <em>p</em><sub><em>k</em></sub></span>.</p>
+</blockquote>
+<h2 id="the-quotient-remainder-theorem">The Quotient Remainder
+Theorem</h2>
+<blockquote>
+<p>Given any integer <span class="math inline"><em>n</em></span> and
+positive integer <span class="math inline"><em>d</em></span>, there
+exists unique integers <span class="math inline"><em>q</em></span> and
+<span class="math inline"><em>r</em></span> such that <span
+class="math display"><em>n</em> = <em>d</em><em>p</em> + <em>r</em>   
+and    0 ≤ <em>r</em> &lt; <em>d</em>.</span> In other words, any number
+can be separated into a number-quotient pair + remainder.</p>
+</blockquote>
+<h2 id="div-and-mod">div and mod</h2>
+<blockquote>
+<p>Given an integer <span class="math inline"><em>n</em></span> and a
+positive integer <span class="math inline"><em>d</em></span>, <span
+class="math display"><em>n</em> div
+<em>d</em> = <em>n</em> // <em>d</em>,  the floor division of n by
+d</span> <span class="math display">$$\begin{align*}
+n \text{ mod } d = \;&amp; n \;\% \;d, \text{the first non negative
+remainder}\\
+&amp;\text{ when n is divided by d}
+\end{align*}$$</span></p>
+</blockquote>
+<h2 id="integer-properties">Integer Properties</h2>
+<h3 id="the-parity-property">The parity property</h3>
+<blockquote>
+<p>Any two consecutive integers have opposite parity (odd and even)</p>
+</blockquote>
+<h3 id="square-of-odd-integer">Square of Odd Integer</h3>
+<blockquote>
+<p>The square of any odd integer has the form 8m11 for some integer
+<span class="math inline"><em>m</em></span>.</p>
+</blockquote>
+<h2 id="absolute-value-and-the-triangle-inequality">Absolute Value and
+the Triangle Inequality</h2>
+<h3 id="definition-of-the-absolute-value">Definition of the Absolute
+Value</h3>
+<blockquote>
+<p>the absolute value of <span class="math inline"><em>x</em></span>,
+denoted as <span class="math inline">|<em>x</em>|</span>, is defined as
+<span class="math display">$$|x| = \begin{cases}
+x \;\;\;\;\;\;\; &amp;\text{ if } x \ge 0 \\
+-x \;\;\;\; &amp;\text{ if } x &lt; 0.
+\end{cases}$$</span></p>
+</blockquote>
+<h3 id="absolute-value-inequality">Absolute value inequality</h3>
+<blockquote>
+<p>For every real number <span class="math inline"><em>r</em></span>,
+<span
+class="math inline"> − |<em>r</em>| ≤ <em>r</em> ≤ |<em>r</em>|</span></p>
+</blockquote>
+<h3 id="absolute-value-equality">Absolute value equality</h3>
+<blockquote>
+<p>For every real number <span class="math inline"><em>r</em></span>,
+<span class="math inline">|−<em>r</em>| = |<em>r</em>|</span>.</p>
+</blockquote>
+<h3 id="triangle-inequality">Triangle Inequality</h3>
+<blockquote>
+<p>For all real number <span class="math inline"><em>x</em></span> and
+<span class="math inline"><em>y</em></span>, <span
+class="math inline">|<em>x</em>+<em>y</em>| ≤ |<em>x</em>| + |<em>y</em>|</span>.</p>
+</blockquote>
+<h1 id="worksheet">Worksheet</h1>
+<blockquote>
+<p>1 There are perfect squares and perfect cubes larger than 1 that are
+also Fibonacci number</p>
+<p>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144…</p>
+<p>144 is an example of a perfect square (12 * 12)</p>
+<p>8 is an example of a perfect cube (2 * 2 * 2)</p>
+</blockquote>
+<blockquote>
+<p>2 for any ineger, <span
+class="math inline"><em>x</em>(<em>x</em>+1)</span> is even</p>
+<p><span
+class="math inline"><em>x</em>(<em>x</em>+1) = <em>x</em><sup>2</sup> + <em>x</em></span></p>
+<p>suppose <span class="math inline"><em>x</em></span> is even, <span
+class="math inline"><em>x</em> = 2<em>n</em></span> <span
+class="math display">(2<em>n</em>)<sup>2</sup> + 2<em>n</em> = 4<em>n</em><sup>2</sup> + 2<em>n</em> = 2(2<em>n</em><sup>2</sup>+<em>n</em>)</span>
+its divisible by 2, hence even</p>
+<p>suppose <span class="math inline"><em>x</em></span> is odd, <span
+class="math inline"><em>x</em> = 2<em>n</em> + 1</span> <span
+class="math display">(2<em>n</em>+1)<sup>2</sup> + 2<em>n</em> + 1 = 4<em>n</em><sup>2</sup> + 6<em>n</em> + 2 = 2(<em>n</em><sup>2</sup>+3<em>n</em>+1)</span>
+its divisible by 2, hence even</p>
+<p>so its always even</p>
+</blockquote>
+<blockquote>
+<p><strong>Theorem</strong>: for all positive integers <span
+class="math inline"><em>n</em></span>, there is an even integer <span
+class="math inline"><em>m</em></span> such that <span
+class="math inline">2<em>n</em> &lt; <em>m</em> &lt; 2<em>n</em> + 3</span></p>
+<p>Suppose we choose an arbitrary integer <span
+class="math inline"><em>n</em></span>, let us choose <span
+class="math inline"><em>m</em> = 2<em>n</em> + 2</span> <span
+class="math display">2<em>n</em> &lt; 2<em>n</em> + 2 &lt; 2<em>n</em> + 3</span></p>
+</blockquote>
+<blockquote>
+<p><strong>Theorem</strong>: every positive odd integers is the
+difference beteween two perfect squares</p>
+<p>Suppose we pick an arbitrary number <span
+class="math inline"><em>n</em></span>, its consecutive perfect squares
+is denoted as <span
+class="math display"><em>n</em><sup>2</sup> ∧ (<em>n</em>+1)<sup>2</sup> = <em>n</em><sup>2</sup> + 2<em>n</em> + 1</span>
+The difference between these two consective squares is <span
+class="math display"><em>n</em><sup>2</sup> + 2<em>n</em> + 1 − <em>n</em><sup>2</sup> = 2<em>n</em> + 1</span>
+By defintion, <span class="math inline">2<em>n</em> + 1</span> is an odd
+number. And since <span class="math inline"><em>n</em></span> is any
+arbitrary integer, <span class="math inline">2<em>n</em> + 1</span>
+denotes every odd number.</p>
+</blockquote>

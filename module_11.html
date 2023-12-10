@@ -1,0 +1,391 @@
+<h1 id="a-working-computer">A Working Computer</h1>
+<h2 id="goals">Goals</h2>
+<ul class="task-list">
+<li><p><label><input type="checkbox" checked="" />Evaluate if a function
+f is in <strong>big</strong>-O of a function g.</label></p></li>
+<li><p><label><input type="checkbox" checked="" />Evaluate if a function
+f is in big-<strong>Omega</strong> of a function g.</label></p></li>
+<li><p><label><input type="checkbox" checked="" />Evaluate if a function
+f is in big-<strong>Theta</strong> of a function g.</label></p></li>
+<li><p><label><input type="checkbox" checked="" />Use Direct Proofs to
+show that a function f is in <strong>big-O</strong> of a function
+g.</label></p></li>
+<li><p><label><input type="checkbox" checked="" />Comprehend how big-O
+is used to analyze an algorithm efficiency.</label></p></li>
+<li><p><label><input type="checkbox" checked="" />Specify the overall
+architecture of a (<strong>Von Neumann</strong>) stored program computer
+— an architecture that instantiates the principle that both program and
+data are bits (i.e., state) loaded and stored in (common)
+memory.</label></p></li>
+<li><p><label><input type="checkbox" checked="" />Trace execution of an
+instruction through a working computer: the basic fetch-decode-execute
+instruction cycle and the data flow to/from the arithmetic logic unit
+(ALU), the main memory and the Program Counter (PC).</label></p></li>
+</ul>
+<h2 id="big-o-big-omega-and-big-theta-notations">Big-O, Big-Omega, and
+Big-Theta Notations</h2>
+<p>a key part in understanding algorithm efficiency - how many
+computations are required as the input increases in size?</p>
+<blockquote>
+<p>Definition: Suppose <span class="math inline"><em>f</em></span> and
+<span class="math inline"><em>g</em></span> are real-valued functions of
+an integer variable <span class="math inline"><em>n</em></span> and
+suppose <span class="math inline"><em>g</em>(<em>n</em>) ≥ 0</span> for
+every integer <span class="math inline"><em>n</em></span> greater than
+some positive real number 1. If for sufficiently large values of <span
+class="math inline"><em>n</em></span>, <span
+class="math inline"><em>A</em> ⋅ <em>g</em> &lt; <em>f</em></span>, then
+<span class="math inline"><em>f</em></span> is order <em>at least</em>
+<span class="math inline"><em>g</em></span>, written as <span
+class="math inline"><em>f</em>(<em>n</em>)</span> is <span
+class="math inline"><em>Ω</em>(<em>g</em>(<em>n</em>))</span> 2. If for
+sufficiently large values of <span
+class="math inline"><em>n</em></span>, <span
+class="math inline">0 &lt; <em>f</em> &lt; <em>B</em> ⋅ <em>g</em></span>,
+then <span class="math inline"><em>f</em></span> is order <em>at
+most</em> <span class="math inline"><em>g</em></span>, written as <span
+class="math inline"><em>f</em>(<em>n</em>)</span> is <span
+class="math inline"><em>O</em>(<em>g</em>(<em>n</em>))</span> <span
+class="math display"><em>f</em>(<em>n</em>) ∈ <em>O</em>(<em>g</em>(<em>n</em>))</span>
+<span class="math display">$$\boxed{\exists c \in \mathbb{R}^+, \exists
+n_0 \in \mathbb{N}, \forall n \in \mathbb{N}, n \ge n_0 \implies f(n)
+\le c \cdot g(n)}$$</span> 3. If for sufficiently large values of <span
+class="math inline"><em>n</em></span>, <span
+class="math inline"><em>A</em><em>ġ</em> &lt; <em>f</em> &lt; <em>B</em> ⋅ <em>g</em></span>,
+then <span class="math inline"><em>f</em></span> is of order <span
+class="math inline"><em>g</em></span>, written as <span
+class="math inline"><em>f</em>(<em>n</em>)</span> is <span
+class="math inline"><em>Θ</em>(<em>g</em>(<em>n</em>))</span></p>
+<p><img style = "max-width:550px" src = "assets/ooo.jpg"></p>
+</blockquote>
+<p>These three functions are all related &gt; Theorem: Relation between
+<span class="math inline"><em>Ω</em>, <em>O</em>, <em>Θ</em></span> &gt;
+&gt; If <span class="math inline"><em>f</em></span> and <span
+class="math inline"><em>g</em></span> are real valued functions defined
+on the same set of nonnegative integers, and if <span
+class="math inline"><em>f</em>(<em>n</em>) ≥ 0</span> and <span
+class="math inline"><em>g</em>(<em>n</em>) ≥ 0</span> for every integer
+<span class="math inline"><em>n</em> ≥ <em>r</em></span>, where <span
+class="math inline"><em>r</em></span> is a positive real number, &gt;
+&gt; then <span class="math inline"><em>f</em>(<em>n</em>)</span> is
+<span class="math inline"><em>Θ</em>(<em>g</em>(<em>n</em>))</span>
+<span class="math inline">⇔</span> <span
+class="math inline"><em>f</em>(<em>n</em>)</span> is <span
+class="math inline"><em>Ω</em>(<em>g</em>(<em>n</em>))</span> and <span
+class="math inline"><em>f</em>(<em>n</em>)</span> is <span
+class="math inline"><em>O</em>(<em>g</em>(<em>n</em>))</span></p>
+<h2 id="orders-of-polynomial-functions">Orders of Polynomial
+functions</h2>
+<blockquote>
+<p>Theorem:</p>
+<p>if <span class="math inline"><em>r</em> ≤ <em>s</em></span> then
+<span
+class="math inline"><em>n</em><sup><em>r</em></sup> ≤ <em>n</em><sup><em>s</em></sup></span></p>
+</blockquote>
+<h3 id="big-o-and-omega-of-polynomials">Big O and Omega of
+polynomials</h3>
+<p>consider <span
+class="math inline"><em>g</em> = 15<em>n</em><sup>3</sup> + 11<em>n</em><sup>2</sup> + 9</span></p>
+<p>to find the big omega of the function, we need to find a find a
+polynomial less than <span class="math inline"><em>g</em></span>.
+Trivially, <span
+class="math display"><em>A</em><em>n</em><sup>3</sup> ≤ 15<em>n</em><sup>3</sup> + 11<em>n</em><sup>2</sup> + 9</span>
+Similarly, to find the big O of <span
+class="math inline"><em>g</em></span>, we need to find a function that
+is larger than <span class="math inline"><em>g</em></span>. Suppose we
+make every term have the same highest order: <span
+class="math display">15<em>n</em><sup>3</sup> + 11<em>n</em><sup>2</sup> + 9 ≤ 15<em>n</em><sup>3</sup> + 11<em>n</em><sup>3</sup> + 9<em>n</em><sup>3</sup> ≤ 35<em>n</em><sup>3</sup></span>
+Hence, we know <span class="math inline"><em>g</em></span> is <span
+class="math inline"><em>O</em>(<em>n</em><sup>3</sup>)</span>, <span
+class="math inline"><em>Ω</em>(<em>n</em><sup>3</sup>)</span>, and <span
+class="math inline"><em>Θ</em>(<em>n</em><sup>3</sup>)</span>.</p>
+<p>For polynomials with negatives, this process becomes more difficult.
+Suppose we have a polynomial <span
+class="math inline"><em>g</em> = <em>n</em><sup>4</sup> − 5<em>n</em> − 8</span>.
+To solve this, we need to use the fact that <span
+class="math inline">0.5<em>n</em><sup>4</sup> − <em>n</em><sup>4</sup> =  − 0.5<em>n</em><sup>4</sup></span>.
+Suppose we have <span class="math display">$$\frac{1}{2}n^4 \ge 5n^3 +
+8n^3$$</span> By transitivity, we can extend this to <span
+class="math display">$$\frac{1}{2}n^4 \ge 5n^3 + 8n^3 \ge 5n +
+8$$</span> <span class="math display">$$\frac{1}{2}n^4 \ge 5n +
+8$$</span> We then need to find some value <span
+class="math inline"><em>a</em></span> that satisfies this inequalities
+<span class="math display">$$\frac{1}{2}n^4 \ge n^3(5 + 8) \implies
+\frac{1}{2}n \ge (5 + 8)  \implies n \ge 26$$</span> So we find that
+<span class="math inline"><em>a</em> = 26</span>. Next, we can rewrite
+our inequality in a more familiar form by subtracting both sides with
+<span class="math inline"><em>n</em><sup>4</sup></span>: <span
+class="math display">$$\frac{1}{2}n^4 \ge 5n + 8 \implies
+-\frac{1}{2}n^4 \ge 5n + 8 - n^4$$</span> We can then flip the
+inequality: <span class="math display">$$\frac{1}{2}n^4 \le    n^4 - 5n
+- 8$$</span> hence, we have found <span
+class="math inline"><em>Ω</em>(<em>n</em><sup>4</sup>)</span> for the
+function <span class="math inline"><em>g</em></span>. To find <span
+class="math inline"><em>O</em></span>, a same process as that of the
+positive can be applied.</p>
+<blockquote>
+<p>Summary:</p>
+<p>To prove <span
+class="math inline"><em>Ω</em>(<em>f</em>(<em>n</em>))</span> of some
+function <span class="math inline"><em>g</em>(<em>n</em>)</span> with
+<span class="math inline"><em>a</em><sub><em>m</em></sub></span> on the
+most significant term</p>
+<ol type="1">
+<li><span class="math inline">$A = \frac{1}{2}a_m$</span></li>
+<li><span class="math inline">$a = \frac{2}{a_m}(|a_1| + ... +
+|a_n|)$</span> or 1 (which ever is larger) except for <span
+class="math inline"><em>a</em><sub><em>m</em></sub></span></li>
+<li>prove by using the fact that <span
+class="math inline">$\frac{1}{2}a_mn^m - an^m =
+-\frac{1}{2}a_nn^m$</span></li>
+</ol>
+</blockquote>
+<h3 id="transitivity-in-big-o">Transitivity in big O</h3>
+<blockquote>
+<p>For any function <span class="math inline"><em>f</em></span> and
+positive real numbers <span class="math inline"><em>r</em></span> and
+<span class="math inline"><em>s</em></span> with <span
+class="math inline"><em>r</em> &lt; <em>s</em></span>,</p>
+<p><span class="math inline"><em>f</em>(<em>n</em>)</span> is <span
+class="math inline"><em>O</em>(<em>n</em><sup><em>r</em></sup>)</span>
+<span class="math inline">⟹</span> <span
+class="math inline"><em>f</em>(<em>n</em>)</span> is <span
+class="math inline"><em>O</em>(<em>n</em><sup><em>s</em></sup>)</span></p>
+</blockquote>
+<h3 id="warning-about-big-o">Warning about big O</h3>
+<p>is is only true for sufficiently large values of <span
+class="math inline"><em>n</em></span>, at smaller values things can be
+different. For example linear is better than log at smaller scales</p>
+<h3 id="finding-big-o">Finding big O</h3>
+<p>we can just consider the dominating term and ignore the rest of the
+terms. Since the largest growing term will dominate</p>
+<h2 id="formal-proofs">Formal Proofs</h2>
+<p>Directly (or indirectly) prove that the formal definition for big O.
+- let some <span class="math inline"><em>c</em></span> - let some <span
+class="math inline"><em>n</em><sub>0</sub></span> - consider an
+unspecified natural number <span class="math inline"><em>n</em></span> -
+assume that <span
+class="math inline"><em>n</em> ≥ <em>n</em><sub>0</sub></span> - show
+<span
+class="math inline"><em>f</em>(<em>n</em>) ≤ <em>c</em> ⋅ <em>g</em>(<em>n</em>)</span></p>
+<p>The key is to use the transistive property of inequalities, you can
+<strong>only</strong> increase the bounds of the inequality
+<strong>never</strong> restrict it.</p>
+<p><span class="math inline"><em>c</em></span> and <span
+class="math inline"><em>n</em><sub>0</sub></span> can be filled out
+AFTER.</p>
+<h2 id="hints-for-big-o-proofs">Hints for Big O proofs</h2>
+<ul>
+<li><span class="math inline"><em>n</em> − 1</span> works for <span
+class="math inline"><em>n</em> ≥ 1</span></li>
+<li>it is reasonable to introduce <span
+class="math inline"><em>k</em><em>n</em><sup>2</sup> − <em>c</em><em>n</em></span>
+for adequately large values of <span
+class="math inline"><em>n</em></span> (literally pull it out of nowhere)
+<ul>
+<li>you can introduce new negative values as long you do it
+properly.</li>
+</ul></li>
+<li><span class="math inline"><em>n</em>/<em>k</em></span> works for
+<span class="math inline"><em>n</em> ≥ <em>k</em></span></li>
+</ul>
+<h1 id="a-working-computer-1">A working computer</h1>
+<ul>
+<li>a processing unit contains an arithmetic and logic unit, and
+processor registers</li>
+<li>a control unit containing an instruction register and a program</li>
+<li>memory storing data and program instructions</li>
+<li>external mass storage</li>
+<li>input and output mechanisms <img src = "assets/computer.png"> ##
+Memory Think of it as one big array of bytes (1 byte per location, 8
+bits)</li>
+<li>each value has a corresponding address pair</li>
+<li>longer instructions are chopped into 8 bytes and stored
+consecutively
+<ul>
+<li>ints, floats, long, ascii, and unicode</li>
+</ul></li>
+<li>only one byte can be transferred per clock cycle to the CPU
+<img src = "assets/memory.png"> ## Arithmetic and logic units</li>
+<li>combinational component which performs arithmetic and logical
+operations
+<ul>
+<li>+, -, *, /, AND, OR, etc</li>
+</ul></li>
+<li>it can detect overflow and other status</li>
+<li>the function is chosen by multiplexers, select bits will be given by
+the control unit (as opcode) <img src = "assets/alu.png"> ## Control
+unit</li>
+<li>a sequential device that controls the process of:
+<ul>
+<li>reading instructions and data from memory</li>
+<li>deciding which instructions to execute</li>
+<li>executing the instructions sequentially
+<ul>
+<li>not exactly true but what it looks like</li>
+</ul></li>
+</ul></li>
+<li>contains the program counter (PC), a register that contains the
+memory address of the next instruction</li>
+</ul>
+<h2 id="our-computer">Our computer</h2>
+<p>Implements the fictional Y86 architecture presented in the textbook
+by Bryant and O’Hallaron, used in CPSC 313. A small subset of the IA32
+architecture</p>
+<p>The Y86 cpu has: - 12 types of instructions - one program counter
+(PC) register - contains the address fo the next instruction to
+execute</p>
+<ul>
+<li>8 general-purpose 32-bit registers
+<ul>
+<li>used for temporary values we are currently working on</li>
+</ul></li>
+<li>one 48 bit instruction register (IR)
+<ul>
+<li>holds pieces of an instruction while it gets retireved from
+meory</li>
+</ul></li>
+<li>Condition code register (CCR)
+<ul>
+<li>holds condition flags for the results of arithmetic operations</li>
+</ul></li>
+</ul>
+<p>Instructions: <img src = "assets/instructions.png"> - instruction
+length ranges from 1-6 bytes, it really depends! - exmaple:
+<code>irmovl 0xCAFEF00D, %ecx</code> -
+<img src = "assets/ins_example.png"> - for every 4 bits: immediate move,
+function, source register, destination register, valc</p>
+<h3 id="more-instructions">More instructions:</h3>
+<ul>
+<li><code>irmovl 0x1A, %ecx</code>
+<ul>
+<li>this instruction stores a constant value in a register (think
+assigning value to var)</li>
+<li>in this case it stores the hex value <span
+class="math inline">1<em>A</em></span> is stored in
+<code>%ecx</code></li>
+<li>“immediate-register move <code>0x1A</code> to <code>%ecx</code></li>
+<li>this new values is “immediately” availabel as part of the binary
+instruction, and does not need to be retried from memory or a
+register</li>
+</ul></li>
+<li><code>subl %eax %eab</code>
+<ul>
+<li>this subtracts the value stored in one register to the next</li>
+<li>they are the source, and destination registers respectively</li>
+<li>This instruction takes the value contained in <code>%eax</code>,
+subtracts it from the value contained in <code>%ebx</code>, and stores
+the result back in <code>%ebx</code>.</li>
+</ul></li>
+</ul>
+<h3 id="sample-program">Sample program</h3>
+<pre class="assembly"><code>label: irmovl 0x35, %eax
+irmovl 0x3, %ebx
+subl %eax, %ebx
+jge label
+halt</code></pre>
+<p>This program: - moves <code>0x35</code> (53) into register A - moves
+<code>0x3</code> (3) into register B - subtracts A’s contents from B’s
+contents and stores the result in B - checks if the last computed result
+is greater or equal to 0 - goes to label if test is true - Test is
+false, so execute next instruction (halt, program ends) - A: 0x00000035
+(53) - B: 0x00000003 (3)B: 0xFFFFFFCE (−50)</p>
+<h3 id="knowing-stuff">knowing stuff</h3>
+<ul>
+<li>how does the computer know which instruction does what?
+<ul>
+<li>each instruction is a sequence of 8 to 48 bits</li>
+<li>the first 8 bits (icode/fcode) determine the instruction type
+<ul>
+<li>Control unit uses these bits to decide how many more bits need to be
+retrieved from memory to assemble the complete instruction</li>
+<li>Also will allow the control unit to send the appropriate select
+signals to the various multiplexers in the CPU</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="executing-instructions">Executing instructions</h3>
+<p>The Y86 CPU divides the excecution into 6 stages: - Fetch: read
+instructions from memory and determine new PC value - Decode: read
+values from registers or other sources - Execute: use the ALU to perform
+computations - Memory: read data from or write data to memory -
+Write-back: store value(s) into register(s). Occurs when a register is
+the destination - PC update: store the new PC value</p>
+<p>Some instructions may skip some stages. It needs TWO clocks –&gt;
+read data and perform operations, write and update data.</p>
+<h4 id="examples">Examples:</h4>
+<p><code>irmovl 0xABADD00D, %ecx</code> 1. Fetch: current instruction ←
+30F1ABADD00D next PC value ← current PC value + 6 1. Decode: valC ←
+ABADD00D 2. Execute: valE ← valC 3. Memory: (no memory access for this
+instruction) 4. Write-back: %ecx ← valE 5. PC update: PC ← next PC
+value</p>
+<p><br></p>
+<p><code>subl %eax, %ebx</code> 1. Fetch: current instruction ← 6103
+next PC value ← current PC value + 2 1. Decode: (valA ← %eax) and (valB
+← %ebx) 1. Execute: valE ← valB − valA 2. Memory: (no memory access for
+this instruction) 3. Write-back: %ebx ← valE 4. PC update: PC ← next PC
+value</p>
+<p><br></p>
+<p><code>jge label</code> 1. Fetch: current instruction ← 7500BABACA
+(memory address where the label operation resides)<br />
+next PC value ← current PC value + 5 2. Decode: valC ← 00BABACA 3.
+Execute: brc ← 1 or 0 (depending on ValE, if the conditions are met) 4.
+Memory: (no memory access for this instruction) 5. Write-back: (no
+general purpose register access) 6. PC update:<br />
+if brc is 0, PC ← next PC value<br />
+if brc is 1, PC ← valC</p>
+<p><br></p>
+<p><code>rmmovl rA, D(rB)</code> - “register to memory move” – copies
+the contents of rA into memory at the adress D spaces away from the
+address contained in rB 1. Fetch: gets the instruction (XXYY) and
+calculates next pc value 2. Decode: gets the data from register A and B
+(YY) 3. Execute: valE &lt;– adds D to the value in rB 4. Memory: omg it
+moves and goes to the memory 5. Write-back: (none) 6. PC update: next pc
+value</p>
+<h2 id="working-computers-i-aint-working">Working computers (i aint
+working)</h2>
+<p>Operations are separated into two distinct clock cycles: read and
+write/execute - read: fetch, decode - execute: executes stuff, update
+<code>PC</code> - write: writes data to memory or registers</p>
+<p>Overview of the computing stages 1. <strong>Fetch stage</strong> -
+Gets the 6 byte instruction using <code>PC</code> –&gt; and stores in to
+<code>IR</code> - reads <code>iCd</code>, <code>iFn</code>, (first
+byte). - computes <code>valP</code> depending on <code>iCd</code>
+(<code>PC + n</code>) (Preliminary <code>next PC</code>) - reads
+<code>rA</code>, <code>rB</code>, <code>valC</code> - <code>rA</code>
+are the raw register location <code>rB</code> from the
+<strong>second</strong> byte of the instruction. <code>valC</code> is
+the remaining information that the instruction holds - passes on the
+info the <strong>decode</strong> stage 2. <strong>Decode stage</strong>
+- computes <code>srcA</code>, <code>srcB</code> from <code>rA</code>,
+<code>rB</code> and <code>dstE</code> based on <code>iCd</code>. -
+<code>srcA</code>, <code>srcB</code> are <strong>computed</strong>
+register addresses from <code>rA</code> and <code>rB</code>. - then uses
+<code>srcA</code>, <code>srcB</code> addresses to get <code>valA</code>,
+<code>valB</code> - the data are passed onto the
+<strong>execute</strong> stage 3. <strong>Execute stage</strong> -
+execute takes <code>valA</code>, <code>valB</code> and sends them to the
+<strong>ALU</strong>. - the <strong>ALU</strong>, depending on
+<code>Opcode</code> from the <code>iFn</code>, it computes
+<code>valE</code> by performing operations on <code>valA</code> and
+<code>valB</code> - the <code>bch</code> value is computed with the
+previous <strong>CCR</strong> value - <strong>CCR</strong> is updated
+depending on the flags a result of computation. - <strong>Update
+PC</strong>: final <code>valP</code> or some other computed value is
+written to <code>next PC</code> depending on the instruction</p>
+<ol start="4" type="1">
+<li><strong>Memory</strong>
+<ul>
+<li>given the specific instruction and the values of <code>valE</code>
+(the memory location). The value is written to memory (not
+registers).</li>
+</ul></li>
+<li><strong>Write back</strong> (only <strong>one</strong> or
+<strong>neither</strong> of Memory and write back can occur in the same
+instruction)
+<ul>
+<li>Register values can also be updated instead of memory</li>
+<li>the values of <code>valE</code> are written to <code>dstE</code>
+(register location)</li>
+</ul></li>
+</ol>

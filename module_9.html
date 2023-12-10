@@ -1,0 +1,164 @@
+<h1 id="weak-induction-proofs">Weak Induction Proofs</h1>
+<h2 id="goals">Goals</h2>
+<ol type="1">
+<li><p>Convert sequences to and from explicit formulas that describe the
+sequence.</p></li>
+<li><p>Convert sums to and from summation/<span
+class="math inline"><em>Σ</em></span> notation.</p></li>
+<li><p>Convert products to and from product/<span
+class="math inline"><em>Π</em></span> notation.</p></li>
+<li><p>Manipulate formulas in summation/product notation by adjusting
+their bounds, merging or splitting summations/products, and factoring
+out values.</p></li>
+<li><p>Identify the base, induction hypothesis and step in an induction
+proof.</p></li>
+<li><p>Establish properties of self-referential structures using
+inductive proofs that naturally build on those self-references.</p></li>
+<li><p>Formally prove properties of the non-negative integers (or a
+subset) that have appropriate self-referential structure using weak
+induction.</p></li>
+<li><p>Recognize the differences between a proof with an IH of P(n-1)
+for a proof with an IH of P(n).</p></li>
+</ol>
+<h1 id="intro">Intro</h1>
+<h2 id="sequences">Sequences</h2>
+<ul>
+<li>A function whose domain is either all the integers between two given
+integers or all the integers greater than or equal to a given
+integer</li>
+<li><span
+class="math inline"><em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, <em>a</em><sub>3</sub>, ..., <em>a</em><sub><em>n</em></sub></span>
+<ul>
+<li><span class="math inline"><em>a</em></span> is a term, and the
+subscript is called the index</li>
+</ul></li>
+</ul>
+<h2 id="summation-notation">Summation Notation</h2>
+<p><span class="math display">$$\sum^n_{k = m}a_k = a_m + a_{m+1} +
+a_{m+2} + ... + a_{m+n}$$</span></p>
+<h3 id="telescoping-sum">Telescoping sum</h3>
+<ul>
+<li>the middle terms cancel out, leaving only the first and last
+terms.</li>
+</ul>
+<h2 id="product-notation">Product Notation</h2>
+<p><span class="math display">$$\prod^n_{k = m}a_k = a_m \cdot
+a_{m+1}\cdot a_{m+2}\cdot \cdot \cdot a_{m+n}$$</span></p>
+<h2 id="factorial-and-n-choose-r-notation">Factorial and “n Choose r”
+Notation</h2>
+<h3 id="factorials">Factorials</h3>
+<p><span
+class="math display"><em>n</em>! = <em>n</em> ⋅ (<em>n</em>−1) ⋅ (<em>n</em>−2) ⋅  ⋅  ⋅ 3 ⋅ 2 ⋅ 1</span>
+or recursively, <span class="math display">$$n! = \begin{cases}
+    1 &amp; n = 0 \\
+    n(n-1) &amp; n \ge 1.
+\end{cases}$$</span> Note: the zero factorial is defined as <span
+class="math inline">0! = 1</span></p>
+<h3 id="combinations">Combinations</h3>
+<p><span
+class="math inline"><em>n</em>, <em>r</em> ∈ ℤ, 0 ≤ <em>r</em> ≤ <em>n</em></span>,
+the symbol <span class="math display">$${n \choose r}$$</span> “n choose
+r” is the number of distinct groups <span
+class="math inline"><em>r</em></span> that can be chosen from <span
+class="math inline"><em>n</em></span>. We define <span
+class="math display">$${n \choose r} = \frac{n!}{r!(n-r)!}.$$</span></p>
+<h1 id="weak-induction">Weak Induction</h1>
+<p>Observe patterns in a few terms of a sequence <span
+class="math inline">⟹</span> arrive at a generalized formula that is
+representative of the whole sequence. Think domino effect.</p>
+<h2 id="principle-of-mathematical-induction">Principle of Mathematical
+Induction</h2>
+<p>Let <span class="math inline"><em>P</em>(<em>n</em>)</span> be a
+property that is defined for integers <span
+class="math inline"><em>n</em></span>, and let <span
+class="math inline"><em>a</em></span> be a fixed integer. Suppose the
+following two statements are true: 1. <span
+class="math inline"><em>P</em>(<em>a</em>)</span> is true 2. For every
+integer <span class="math inline"><em>k</em> ≥ <em>a</em></span>, if
+<span class="math inline"><em>P</em>(<em>k</em>)</span> is true then
+<span class="math inline"><em>P</em>(<em>k</em>+1)</span> is true. Then
+the following statement is true <span
+class="math display">∀<em>n</em> ∈ ℤ, <em>n</em> ≥ <em>a</em> ⟹ <em>P</em>(<em>n</em>)</span></p>
+<p><strong>Imporant:</strong> induction only shows that that the formula
+works for <strong>integers</strong>, it is <strong>insufficient</strong>
+to use induction for real numbers.</p>
+<h2 id="summary-of-proof-process">Summary of Proof Process</h2>
+<ol type="1">
+<li>rewrite and state <span
+class="math inline"><em>P</em>(<em>n</em>)</span> clearly</li>
+<li>Show that <span class="math inline"><em>P</em>(1)</span> is true, or
+whatever first value</li>
+<li>Show that for every integer <span
+class="math inline"><em>k</em> ≥ 1</span>, if <span
+class="math inline"><em>P</em>(<em>k</em>)</span> is true then <span
+class="math inline"><em>P</em>(<em>k</em>+1)</span> is also true
+(inductive hypothesis)
+<ul>
+<li>Suppose that <span class="math inline"><em>P</em>(<em>k</em>)</span>
+is true for a particular but arbitrarily chosen integer <span
+class="math inline"><em>k</em> ≥ 1</span> …</li>
+</ul></li>
+<li>Show that both sides are equal
+<ul>
+<li>In general, <span class="math inline"><em>P</em>(<em>k</em>) +  last
+term = <em>P</em>(<em>k</em>+1)</span></li>
+</ul></li>
+<li>Conclude and state <span
+class="math inline"><em>P</em>(<em>n</em>)</span> is true
+<ul>
+<li>Since we have proved both the basis step and the inductive step, we
+conclude that the theorem is true.</li>
+</ul></li>
+</ol>
+<p>Induction proves sequences that have a <strong>closed form</strong>
+(that can be written as a simple formula without … or summation).</p>
+<h2 id="worksheet">Worksheet</h2>
+<blockquote>
+<p>prove using induction that <span
+class="math inline">∀<em>n</em> ∈ ℤ, <em>n</em> ≥ 4 ⟹ 2<sup><em>n</em></sup> &lt; <em>n</em>!</span></p>
+<p>for <span
+class="math inline"><em>n</em> = 4, 2<sup>4</sup> &lt; <em>n</em>!</span></p>
+<p>assume true for <span
+class="math inline"><em>n</em> = <em>k</em></span> and prove for <span
+class="math inline"><em>n</em> = <em>k</em> + 1</span> <span
+class="math display">2<sup><em>k</em> + 1</sup> = 2<sup><em>k</em></sup> * 2 &lt; (<em>k</em>+1)! = (<em>k</em>+1)<em>k</em>!</span>
+we know that <span
+class="math inline">2<sup><em>k</em></sup> &lt; <em>n</em>!</span>,
+moreover, we also know that <span
+class="math inline">2 &lt; <em>k</em> + 1</span>, therefore <span
+class="math display">2<sup><em>k</em> + 1</sup> &lt; (<em>k</em>+1)!</span>
+it works now!!</p>
+</blockquote>
+<blockquote>
+<p>Prove that for every value of <span
+class="math inline"><em>a</em> ≠ 0, 1</span>, <span
+class="math display">$$\sum^t_{i = 0}a^i = \frac{a^{t + 1} -
+1}{a-1}$$</span> For <span class="math inline"><em>t</em> = 1</span>,
+<span class="math display">$$1 + a = \frac{a^2 - 1}{a - 1} = a +
+1$$</span> Assume this is true for t = k, then we try to show for <span
+class="math inline"><em>k</em> + 1</span> <span
+class="math display">$$\sum^{k+1}_{i = 0}a^i = \sum^{k}_{i = 0}a^i +
+a^{k+1}$$</span> <span class="math display">$$= \frac{a^{k + 1} -
+1}{a-1} + a^{k+1} = \frac{a^{k + 1} - 1 + a^{k+2} - a^{k+1}}{a-1} =
+\frac{a^{k+2} - 1}{a-1}$$</span> we won! Therefore, the proposition is
+true!</p>
+</blockquote>
+<blockquote>
+<p>Prove that for every <span class="math inline"><em>n</em> ≥ 1</span>
+<span class="math display">$$\sum^n_{t = 1}\frac{1}{i^2} \le 2 -
+\frac{1}{n}$$</span> for <span class="math inline"><em>n</em> = 1</span>
+<span class="math display">1 = 2 − 1</span> Assume the proposition is
+true for <span class="math inline"><em>n</em> = <em>k</em></span>, we
+then show for <span class="math inline"><em>k</em> + 1</span> <span
+class="math display">$$\sum^{k + 1}_{t = 1}\frac{1}{i^2} \le 2 -
+\frac{1}{k+1}$$</span> <span class="math display">$$\sum^{k}_{t =
+1}\frac{1}{i^2} + \frac{1}{(k + 1)^2}\le 2 - \frac{1}{k+1}$$</span>
+<span class="math display">$$2 - \frac{1}{k} + \frac{1}{(k + 1)^2}\le 2
+- \frac{1}{k+1}$$</span> We need to use the fact that <span
+class="math inline">$\frac{1}{(k + 1)^2} &lt; \frac{1}{k(k+1)}$</span>
+<span class="math display">$$2 - \frac{1}{k} + \frac{1}{k(k + 1)}\le 2 -
+\frac{1}{k+1}$$</span> <span class="math display">$$2 - \frac{1}{k} +
+\frac{1}{k} - \frac{1}{(k + 1)}\le 2 - \frac{1}{k+1}$$</span> <span
+class="math display">$$2 - \frac{1}{(k + 1)}\le 2 -
+\frac{1}{k+1}$$</span> ohhhh its true af!!</p>
+</blockquote>

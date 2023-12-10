@@ -1,0 +1,274 @@
+<h1 id="module-04-propositional-logic-proofs">Module 04: Propositional
+Logic Proofs</h1>
+<h2 id="goals">Goals</h2>
+<ol type="1">
+<li><p>Use <strong>truth tables</strong> to establish or refute the
+<strong>validity of a rule of inference</strong>.</p></li>
+<li><p>Given a rule of inference and propositional logic statements that
+correspond to the rule’s premises, apply the rule to <strong>infer a new
+statement</strong> implied by the original statements.</p></li>
+<li><p>Determine whether or not a propositional <strong>logic proof is
+valid</strong>, and explain why it is <strong>valid or
+invalid</strong>.</p></li>
+<li><p>Explore the consequences of a set of propositional logic
+statements by application of <strong>equivalence and inference
+rules</strong>, especially in order to massage statements into a desired
+form.</p></li>
+<li><p>Devise and attempt multiple different, appropriate strategies for
+<strong>proving a propositional logic statement</strong> follows from a
+list of premises.</p></li>
+</ol>
+<h2 id="definitions">Definitions</h2>
+<p><strong>Argument</strong>: a sequence of statements</p>
+<p><strong>Argument form</strong>: a sequence of statement forms.</p>
+<p><strong>Premises (or assumptions or hypotheses)</strong>: All
+statements in an argument and all statement forms in an argument form,
+except for the final one.</p>
+<p><strong>Conclusion</strong>: final statement form in an argument. the
+symbol <span class="math inline">∴</span> is typically placed before the
+conclusion.</p>
+<p><strong>Argument Form is Valid</strong>: no matter what statement is
+substituted into the argument, if the resulting premises are all true,
+then the conclusion is also true. If the premises are impossible (always
+false), the argument is valid by default.</p>
+<p><strong>Argument is Valid</strong>: its form is valid.</p>
+<p><strong>Argument is Sound</strong>: its form is valid and its
+premises are true (true content-wise). See <a
+href="#soundness">Soundness</a></p>
+<p><strong>Critical row</strong>: row in truth table where all of the
+premises are true.</p>
+<p><strong>Syllogism</strong>: an argument form consisting of 2 premises
+and a conclusion. <a href="#modulus-ponens-and-modulus-tollens">See this
+section for more details</a> - <strong>Major premise</strong>: first
+premise - <strong>Minor premise</strong>: second premise</p>
+<p><strong>Supposition</strong>: initial guess or hypothesis. (Suppose
+…)</p>
+<h2 id="form-of-argument">Form of Argument</h2>
+<p>An argument can be written as</p>
+<p><span class="math display">$$\begin{align*}
+    \text{Premise 1}\\
+    \text{Premise 2} \\
+    \vdots \\
+    \text{Premise n}\\
+    \hline
+    \therefore \text{Conclusion}
+\end{align*}$$</span> Proving such an argument shows that if all the
+premises are true, the conclusion must also be true. Symbolically, we
+can write <span class="math display">$$\boxed{(\text{Premise 1} \land
+\text{Premise 2} \land \dots \land \text{Premise n}) \implies
+\text{Conclusion}}$$</span></p>
+<h2 id="valid-and-invalid-arguments">Valid and Invalid Arguments</h2>
+<p>We only discuss the validity of argument <strong>form</strong>, not
+of the contents itself. If the <strong>premises are true</strong>, the
+<strong>conclusion</strong> that follows <strong>must be
+true</strong>.</p>
+<h3 id="test-for-validity"><strong>Test for Validity</strong></h3>
+<ol type="1">
+<li><p>Identify the premises and conclusion of the argument
+form</p></li>
+<li><p>Construct <strong>truth table</strong> of the premises and
+arguments</p></li>
+<li><p>If <strong>every</strong> critical row is true (premises
+<strong>and</strong> conclusion are <strong>true</strong>), the argument
+form is <strong>valid</strong></p></li>
+<li><p>if the premises are <strong>always false</strong>, the statement
+overall is valid.</p></li>
+</ol>
+<blockquote>
+<p><strong>Example</strong>: Determine the validity of the following
+statement <span class="math display">$$\begin{align*}
+p &amp;\implies q \lor \lnot r \\
+p &amp;\implies  p \land r \\
+\therefore p &amp;\implies r \\
+\end{align*}$$</span> Skipping some elements of the truth table, we find
+that for <span
+class="math inline">(<em>p</em>,<em>q</em>,<em>r</em>) → (<em>T</em>,<em>F</em>,<em>F</em>)</span>,
+the premises <span
+class="math inline"><em>p</em> ⟹ <em>q</em> ∨ ¬<em>r</em></span> and
+<span class="math inline"><em>p</em> ⟹ <em>p</em> ∧ <em>r</em></span>
+are true but <span class="math inline"><em>p</em> ⟹ <em>r</em></span> is
+false. Therefore the statement is NOT valid.</p>
+</blockquote>
+<p>Similarly, one can also use inference rules to logically demonstrate
+that the conclusion arises from the premises if the premises are true. -
+An argument is valid if it has <strong>impossible</strong> premises</p>
+<h3 id="test-for-invalidity"><strong>Test for Invalidity</strong></h3>
+<p>All that is required is to find a specific case where the critical
+row leads to a false conclusion - find truth values where all the
+premises are true but the conclusion is false</p>
+<p>Alternatively, we need to show that all the premises and the negation
+of the conclusion is true <span class="math display">$$\begin{align*}
+    \lnot (\lnot p_1 \lor \lnot  p_2 \lor \lnot p_3 \lor \dots \lor
+\text{Conclusion}) \equiv T \\
+    p_1 \land p_2 \land p_3 \land \dots \land \lnot \text{Conclusion}
+\equiv T
+\end{align*}$$</span></p>
+<h2 id="modulus-ponens-and-modulus-tollens">Modulus Ponens and Modulus
+Tollens</h2>
+<p><strong>Modulus ponens:</strong> - Latin for method of affirming - Is
+a <strong>syllogism</strong> with the following form: <span
+class="math display">$$\begin{align*}
+    &amp;\text{if } p \text{ then } q\\
+    &amp;p \\
+    \therefore \;&amp; q
+\end{align*}$$</span> - it is a valid form of argument</p>
+<p><strong>Modulus Tollens:</strong> - Latin for method of denying -
+Also is a <strong>syllogism</strong> but with the form <span
+class="math display">$$\begin{align*}
+    &amp;\text{if } p \text{ then } q\\
+    &amp;\lnot q \\
+    \therefore \;&amp; \lnot p
+\end{align*}$$</span> - It uses contradiction as a method of reasoning
+(<span class="math inline"><em>q̸</em></span>). It is valid because of
+the contrapositive rule.</p>
+<h2 id="rules-of-inference">Rules of Inference</h2>
+<p>Rule of Inference: a form of an argument that is
+<strong>valid</strong>. (think logical deductions)</p>
+<p>The following section will list the common types of rules of
+inference. Many rules of inferences can be used together to verify the
+validity of an argument. ### <strong>Generalization</strong> <span
+class="math display">$$\begin{align*}
+    &amp;p\\
+    \therefore \;&amp;p \lor q
+\end{align*} \;\;\;\;
+\text{ and } \;\;\;\;
+\begin{align*}
+    &amp;q\\
+    \therefore \;&amp;p \lor q
+\end{align*}\;\;\;\;
+\text{ and } \;\;\;\;
+\begin{align*}
+    &amp;p\\
+    \therefore \;&amp;q \implies p
+\end{align*}$$</span> <strong>OR</strong> only requires <strong>only
+one</strong> component to be <strong>true</strong> for the whole
+statement to be <strong>true</strong>. It generalizes the statement to
+include <span class="math inline"><em>q</em></span>.</p>
+<h3 id="specialization"><strong>Specialization</strong></h3>
+<p><span class="math display">$$\begin{align*}
+    &amp;p \land q \\
+    \therefore \; &amp; p
+\end{align*} \;\;\;\;
+\text{ and } \;\;\;\;
+\begin{align*}
+    &amp;p \land q \\
+    \therefore \; &amp; q
+\end{align*}$$</span> An <strong>AND</strong> statement is true only if
+both components are true. Hence we can specialize and say either <span
+class="math inline"><em>p</em></span> or <span
+class="math inline"><em>q</em></span> is true (whichever is needed).</p>
+<h3 id="conjunction">Conjunction</h3>
+<p><span class="math display">$$\begin{align*}
+   &amp; p \\
+    &amp;q\\
+    \therefore\;  &amp;  p \land q
+\end{align*}$$</span> This is an important rule that can be used to show
+impossible premises!!</p>
+<h3 id="elimination">Elimination</h3>
+<p><span class="math display">$$\begin{align*}
+    &amp;p \lor q \\
+   &amp; \lnot p\\
+    \therefore \; &amp; q
+\end{align*} \;\;\;\;
+\text{ and } \;\;\;\;
+\begin{align*}
+    &amp;p \lor q \\
+   &amp; \lnot q \\
+    \therefore \; &amp; p
+\end{align*}$$</span></p>
+<h3 id="transitivity"><strong>Transitivity</strong></h3>
+<p><span class="math display">$$\begin{align*}
+    &amp; p \implies q\\
+    &amp; q \implies r\\
+    \therefore \; &amp; p \implies r
+\end{align*}$$</span> Even more if statements can be chained together to
+simplify to the final conditional. Can be thought of as <span
+class="math inline"><em>p</em></span> so <span
+class="math inline"><em>q</em></span> is true, and if <span
+class="math inline"><em>q</em></span>, then <span
+class="math inline"><em>r</em></span> is true. Hence, if <span
+class="math inline"><em>p</em></span> then <span
+class="math inline"><em>r</em></span>.</p>
+<h3 id="proof-by-division-into-cases"><strong>Proof By Division into
+Cases</strong></h3>
+<p><span class="math display">$$\begin{align*}
+    &amp; p \lor q \\
+    &amp; p \implies r \\
+    &amp; q \implies r \\
+    \therefore \; &amp; r
+\end{align*}\;\;\;\;\;
+\text{ and } \;\;\;\;
+\begin{align*}
+    &amp; p \implies r \\
+    &amp; q \implies r \\
+    \therefore \; &amp; (p \lor q) \implies r
+\end{align*}$$</span> It breaks the <strong>OR</strong> into two
+distinct cases and shows that both cases will lead to <span
+class="math inline"><em>r</em></span>. As a conclusion, <span
+class="math inline"><em>r</em></span> must be true.</p>
+<h3 id="contradiction-rule"><strong>Contradiction Rule</strong></h3>
+<p>If you can show that the <strong>supposition</strong> that statement
+<span class="math inline"><em>p</em></span> is <strong>false</strong>
+leads <strong>logically to a contradiction</strong>, then you can
+conclude that <strong>p is true</strong>. <span
+class="math display">$$\begin{align*}
+    &amp; \lnot p \implies \mathbf{c}, \text{ where c is a
+contradiction}\\
+    \therefore \; &amp; p
+\end{align*}$$</span> This property is the key to proof by
+contradiction.</p>
+<h3 id="resolution">Resolution</h3>
+<p><span class="math display">$$\begin{align*}
+    &amp;p \lor q \\
+   &amp; \lnot p \lor r \\
+    \therefore \; &amp;q \lor r
+\end{align*}$$</span></p>
+<h2 id="fallacies">Fallacies</h2>
+<p><strong>Fallacy</strong>: an error in argument that results in an
+invalid argument.<br />
+Three common fallacies include: - Using ambiguous premises (but treating
+them as unambiguous) - Circular reasoning (assuming what is to be proved
+as true) - Jumping to a conclusion (don’t assume!!)</p>
+<h3 id="converse-error">Converse error</h3>
+<p>Recall that the converse is not logically equivalent with the
+original condition. Hence, the following statement is
+<strong>invalid</strong> <span
+class="math display">$$\color{red}\begin{align*}
+    &amp; p \implies q\\
+    &amp; q\\
+    \therefore \; &amp; p
+\end{align*}$$</span></p>
+<h3 id="inverse-error">Inverse error</h3>
+<p>Similar to the inverse error, the inverse is also not logically
+equivalent with the original conditional. Hence, the following statement
+is also <strong>invalid</strong> <span
+class="math display">$$\color{red}\begin{align*}
+    &amp; p \implies q\\
+    &amp; \lnot p\\
+    \therefore \; &amp; \lnot q
+\end{align*}$$</span></p>
+<h2 id="soundness">Soundness</h2>
+<p>An argument is <strong>sound</strong> if, and only if, it is
+<strong>valid</strong> <em>and</em> <strong>all it has TRUE
+premises</strong>. An argument that is not sound is called unsound. It
+may be necessary to look at the contents of the premises
+themselves.<br />
+Truth of Form <span class="math inline">≠</span> Truth of Content.</p>
+<p>Arguments can be <strong>valid</strong> through deduction with
+inference rules, but the premises themselves may be false. These are
+<strong>valid</strong> but NOT <strong>sound</strong> arguments &gt;
+Example: the following is a valid but not sound argument<br />
+&gt; <span class="math inline">   </span> A platypus is a bird<br />
+&gt; <span class="math inline">   </span> All birds are mammals<br />
+&gt; <span class="math inline">∴</span> platypus are birds</p>
+<p>Hence, arguments are really only true when they are
+<strong>sound</strong>.</p>
+<h2 id="summary">SUMMARY</h2>
+<p><img src = "assets/inference.jpg" width = "600px"></img>
+<img src = "assets/rulesofinference.png" width = "600px"></img></p>
+<ul>
+<li><strong>Valid (form only)</strong>: the premises are true, AND the
+conclusion is true</li>
+<li><strong>Sound (content and form)</strong>: is valid and has
+<strong>true</strong> premises.</li>
+</ul>

@@ -1,0 +1,500 @@
+<h1 id="sets-and-predicate-logic">Sets and Predicate Logic</h1>
+<h2 id="goals">Goals</h2>
+<ol type="1">
+<li><p>Use truth tables to establish or refute the validity of a rule of
+inference.</p></li>
+<li><p>Given a rule of inference and propositional logic statements that
+correspond to the rule’s premises, apply the rule to infer a new
+statement implied by the original statements.</p></li>
+<li><p>Determine whether or not a propositional logic proof is valid,
+and explain why it is valid or invalid.</p></li>
+<li><p>Explore the consequences of a set of propositional logic
+statements by application of equivalence and inference rules, especially
+in order to massage statements into a desired form.</p></li>
+<li><p>Devise and attempt multiple different, appropriate strategies for
+proving a propositional logic statement follows from a list of
+premises.</p></li>
+</ol>
+<h2 id="definitions">Definitions</h2>
+<p><strong>Predicate</strong>: a sentence that contains a finite number
+of variables and becomes a statement when specific values are
+substituted for the variables. - <strong>domain</strong> of a predicate
+variable: the set of <strong>all values</strong> that may be
+<strong>substituted</strong> in place of the variable.</p>
+<p><strong>Truth Set</strong>: all values in the domain <span
+class="math inline"><em>D</em></span> for a predicate <span
+class="math inline"><em>P</em>(<em>x</em>)</span> that makes <span
+class="math inline"><em>P</em>(<em>x</em>)</span> true. - <span
+class="math inline">{<em>x</em> ∈ <em>D</em>|<em>P</em>(<em>x</em>)}</span></p>
+<p><strong>Quantifer</strong>: words that refer to quantities (some,
+all) – tells how many elements are true in a predicate.</p>
+<p><strong>Method of Exhaustion</strong>: showing the truth of a
+predicate by checking all the possibilities in the domain.</p>
+<p><strong>Counterexample</strong>: a value of <span
+class="math inline"><em>x</em></span> that makes <span
+class="math inline"><em>P</em>(<em>x</em>)</span> false.</p>
+<h2 id="predicates-and-quantified-statements">Predicates and Quantified
+Statements</h2>
+<p>Imagine a mathematical statement that expresses a logic relationship
+with variables. There are a finite amount of variables that can be
+substituted with specific values to become a logic statement. In
+general, we can denote a predicate as <span
+class="math inline"><em>P</em>(<em>x</em>)</span> where <span
+class="math inline"><em>x</em> ∈ <em>D</em></span> and <span
+class="math inline">∃</span> some truth set such that <span
+class="math inline">{<em>x</em> ∈ <em>D</em>|<em>P</em>(<em>x</em>)}</span>.
+&gt; <strong>Example</strong>: Let P(x) be the predicate <span
+class="math inline"><em>x</em><sup>2</sup> &gt; <em>x</em></span> with
+<span class="math inline">$D = \R$</span>. Find specific values of <span
+class="math inline"><em>P</em>(<em>x</em>)</span><br />
+&gt; <span class="math inline"><em>P</em>(1)</span> is false because
+<span class="math inline">1<sup>2</sup> = 1</span><br />
+&gt; <span class="math inline"><em>P</em>(2)</span> is true because
+<span class="math inline">2<sup>2</sup> &gt; 2</span></p>
+<h2 id="universal-quantifier-forall">Universal Quantifier <span
+class="math inline">∀</span></h2>
+<p>Read as “for every”, “for each”, “for any”, “given any”, “for all”.
+Quantifies EVERY element in the set. Let <span
+class="math inline"><em>Q</em>(<em>x</em>)</span> be a predicate and
+<span class="math inline"><em>D</em></span> the domain of <span
+class="math inline"><em>x</em></span>, a universal statement is of the
+form <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>Q</em>(<em>x</em>)</span>
+It is true <strong>if, and only if</strong> <span
+class="math inline"><em>Q</em>(<em>x</em>)</span> is true for each
+individual <span
+class="math inline"><em>x</em>, <em>x</em> ∈ <em>D</em></span>.
+Conversely, it is false <strong>if, and only if</strong> <span
+class="math inline"><em>Q</em>(<em>x</em>)</span> is false for at least
+one <span class="math inline"><em>x</em>, <em>x</em> ∈ <em>D</em></span>
+(counter example).</p>
+<h2 id="existential-quantifier-exists">Existential Quantifier <span
+class="math inline">∃</span></h2>
+<p>Read as “there exists”. Quantifies that ONE specific element exists
+in the set. Let <span class="math inline"><em>Q</em>(<em>x</em>)</span>
+be a predicate and <span class="math inline"><em>D</em></span> the
+domain of <span class="math inline"><em>x</em></span>, an existential
+statement is a statement of the form <span
+class="math display">∃<em>x</em> ∈ <em>D</em>, <em>Q</em>(<em>x</em>)</span>
+It is true <strong>if, and only if</strong>, Q(x) is true for <strong>at
+least one</strong> <span
+class="math inline"><em>x</em>, <em>x</em> ∈ <em>D</em></span>. It is
+false <strong>if, and only if</strong>, <span
+class="math inline"><em>Q</em>(<em>x</em>)</span> is false for all <span
+class="math inline"><em>x</em>, <em>x</em> ∈ <em>D</em></span>.</p>
+<h2 id="translating-between-informal-and-formal-language">Translating
+between Informal and Formal Language</h2>
+<p>Helps with understanding or something, just think about it to
+translate. &gt; Example 1:</p>
+<blockquote>
+<p>Example 2:</p>
+</blockquote>
+<h3 id="trailing-quantifiers">Trailing Quantifiers</h3>
+<p>Rearrange sentence such that the quantifers are at the end of the
+sentence.</p>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<h2 id="universal-conditional-statements">Universal Conditional
+Statements</h2>
+<p>Apply conditionals on quantified amounts within a set. <span
+class="math display">∀<em>x</em> ∈ <em>S</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+&gt; More examples i dont want to write</p>
+<h3 id="vacuously-true-universal-conditional-statements">Vacuously true
+universal conditional statements</h3>
+<p>Consider the universal conditional statement <span
+class="math display">∀<em>x</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+This statement indicates that <span
+class="math inline"><em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+is true for ALL values of <span class="math inline"><em>x</em></span>,
+even those that make <span
+class="math inline"><em>P</em>(<em>x</em>)</span> false. If <span
+class="math inline"><em>P</em>(<em>x</em>)</span> (the hypothesis) is
+false, no matter what <span
+class="math inline"><em>Q</em>(<em>x</em>)</span> is, the statement
+overall is still <strong>vacuously</strong> true.</p>
+<h2
+id="equivalent-forms-of-universal-and-existential-statements">Equivalent
+Forms of Universal and Existential Statements</h2>
+<p>Consider the conditional statement <span
+class="math display">∀<em>x</em> ∈ <em>U</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+Can be written in the form <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>Q</em>(<em>x</em>)</span>
+where <span class="math inline"><em>D</em> ⊂ <em>U</em></span> such that
+<span
+class="math inline">∀<em>x</em> ∈ <em>D</em>, <em>P</em>(<em>x</em>)</span>
+(D is subset of U such that every value of D makes P(x) true).
+Conversely, the statement <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>Q</em>(<em>x</em>)</span>
+can be written as <span
+class="math display">∀<em>x</em>, <em>x</em> ∈ <em>D</em> ⟹ <em>Q</em>(<em>x</em>)</span></p>
+<h2 id="bound-variables-and-scope">Bound Variables and Scope</h2>
+<p>Imagine scope in programming functions. In a universal statement
+<span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>P</em>(<em>x</em>)</span>
+<span class="math inline"><em>x</em></span> is bounded by the quantifier
+<span class="math inline">∀</span> and its scope is confined by when the
+statement starts and ends (like local params in a function).</p>
+<h2 id="implicit-quantification">Implicit Quantification</h2>
+<p>Let <span class="math inline"><em>P</em>(<em>x</em>)</span> and <span
+class="math inline"><em>Q</em>(<em>x</em>)</span> be predicates and
+suppose the common domain of <span class="math inline"><em>x</em></span>
+is <span class="math inline"><em>D</em></span> - The notation <span
+class="math inline"><em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+means <span
+class="math inline">∀<em>x</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+- every element in the truth sat <span
+class="math inline"><em>P</em>(<em>x</em>)</span> is in the truth set of
+<span class="math inline"><em>Q</em>(<em>x</em>)</span> (imagine subset)
+- The notation <span
+class="math inline"><em>P</em>(<em>x</em>) ⇔ <em>Q</em>(<em>x</em>)</span>
+means <span
+class="math inline">∀<em>x</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+- the truth set of <span
+class="math inline"><em>P</em>(<em>x</em>)</span> and <span
+class="math inline"><em>Q</em>(<em>x</em>)</span> are the same. (imagine
+same set)</p>
+<p>They arent used with <span class="math inline">$\exist$</span>
+because of the vacuous truth makes it really useless!</p>
+<blockquote>
+<p>Examples:</p>
+</blockquote>
+<h2 id="negations-of-quantified-statements">Negations of Quantified
+Statements</h2>
+<p>Suppose we have the universal quantifier statement <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>Q</em>(<em>x</em>)</span>
+then we can say the negation of the statement (theres one in D that
+gives false Q(x)) <span class="math display">$$\boxed{\lnot (\forall x
+\in D, Q(x)) \equiv \exists x \in D, \lnot Q(x)}$$</span></p>
+<p>Similarly, suppose we have the existential quantifier statement <span
+class="math display">∃<em>x</em> ∈ <em>D</em>, <em>Q</em>(<em>x</em>)</span>
+Then the negation of the statement (all elements in D produce not Q(x))
+is <span class="math display">$$\boxed{\exists x \in D, Q(x) \equiv
+\forall x \in D, \lnot Q(x)}$$</span></p>
+<blockquote>
+<p>Examples: dont wanna do them</p>
+</blockquote>
+<h2 id="negations-of-universal-conditional-statements">Negations of
+Universal Conditional Statements</h2>
+<p>Consider the universal conditional statement <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+then by definition, we know the negation is <span
+class="math display">∃<em>x</em> ∈ <em>D</em>, ¬(<em>P</em>(<em>x</em>)⟹<em>Q</em>(<em>x</em>)) ≡ ∃<em>x</em> ∈ <em>D</em>, ¬(¬<em>P</em>(<em>x</em>)∨<em>Q</em>(<em>x</em>))</span>
+Hence we can say, <span class="math display">$$\boxed{\lnot (\forall x
+\in D, P(x) \implies Q(x)) \equiv \exists x \in D, P(x) \land  \lnot
+Q(x)}$$</span></p>
+<blockquote>
+<p>Example 1:</p>
+</blockquote>
+<blockquote>
+<p>Example 2:</p>
+</blockquote>
+<h2 id="relating-forall-exists-land-lor">Relating <span
+class="math inline">∀,∃,∧,∨</span></h2>
+<p>The negations of quantifying statements seems similar to De Morgan’s
+law. This is not a coincidence, we can generalize quantifying statements
+with <span class="math inline">∧</span> and <span
+class="math inline">∨</span>.</p>
+<p>If <span class="math inline"><em>Q</em>(<em>x</em>)</span> is a
+predicate and the domain of <span class="math inline"><em>D</em></span>
+is the set <span
+class="math inline">{<em>x</em><sub>0</sub>, <em>x</em><sub>1</sub>, ..., <em>x</em><sub><em>n</em></sub>}</span>,
+then we can say <span class="math display">$$\boxed{\forall x \in D,
+Q(x) \equiv Q(x_0) \land Q(x_1) \land Q(x_2)\land ... \land
+Q(x_n)}$$</span></p>
+<p>Similarly, for the existential quantifier <span
+class="math display">$$\boxed{\exists x \in D, Q(x) \equiv Q(x_0) \lor
+Q(x_1) \lor Q(x_2)\lor ... \lor Q(x_n)}$$</span></p>
+<h2 id="variations-of-universal-conditional-statements">Variations of
+Universal Conditional Statements</h2>
+<p>Consider a statement of the form <span
+class="math inline">∀<em>x</em> ∈ <em>D</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+1. its <strong>contrapositive</strong> is <span
+class="math inline">∀<em>x</em> ∈ <em>D</em>, ¬<em>Q</em>(<em>x</em>) ⟹ ¬<em>P</em>(<em>x</em>)</span>
+2. its <strong>converse</strong> is <span
+class="math inline">∀<em>x</em> ∈ <em>D</em>, <em>Q</em>(<em>x</em>) ⟹ <em>P</em>(<em>x</em>)</span>
+3. its <strong>inverse</strong> is <span
+class="math inline">∀<em>x</em> ∈ <em>D</em>, ¬<em>P</em>(<em>x</em>) ⟹ ¬<em>Q</em>(<em>x</em>)</span></p>
+<p>The equivalence between the original statement and its variants are
+the same as those of conditionals. That is, it is <strong>equivalent
+with its contrapositive</strong>, and <strong>not equivalent</strong>
+with its <strong>converse and inverse</strong>.</p>
+<h2 id="necessary-and-sufficient-conditions">Necessary and Sufficient
+Conditions</h2>
+<p>As with conditional statements, necessary and sufficient conditions
+can also be extended to universal conditional statements. - “<span
+class="math inline">∀<em>x</em>, <em>r</em>(<em>x</em>)</span> is a
+<strong>sufficient</strong> condition for <span
+class="math inline"><em>s</em>(<em>x</em>)</span>” means “<span
+class="math inline">∀<em>x</em>, <em>r</em>(<em>x</em>) ⟹ <em>s</em>(<em>x</em>)</span>”
+- “<span class="math inline">∀<em>x</em>, <em>r</em>(<em>x</em>)</span>
+is a <strong>necessary</strong> condition for <span
+class="math inline"><em>s</em>(<em>x</em>)</span>” means “<span
+class="math inline">∀<em>x</em>, ¬<em>r</em>(<em>x</em>) ⟹ ¬<em>s</em>(<em>x</em>)</span>”
+or “<span
+class="math inline">∀<em>x</em>, <em>s</em>(<em>x</em>) ⟹ <em>r</em>(<em>x</em>)</span>”
+- “<span class="math inline">∀<em>x</em>, <em>r</em>(<em>x</em>)</span>
+only if <span class="math inline"><em>s</em>(<em>x</em>)</span>” means
+“<span
+class="math inline">∀<em>x</em>, ¬<em>s</em>(<em>x</em>) ⟹ ¬<em>r</em>(<em>x</em>)</span>”
+or “<span
+class="math inline">∀<em>x</em>, <em>r</em>(<em>x</em>) ⟹ <em>s</em>(<em>x</em>)</span>”</p>
+<blockquote>
+<p>Examples: bro i dont want those</p>
+</blockquote>
+<h2 id="statements-with-multiple-quantifiers">Statements with Multiple
+Quantifiers</h2>
+<p>When a statement contains more than one kind of quantifier, we
+imagine the actions suggested by the quantifiers as being performed in
+the <strong>order in which</strong> the quantifiers occur. <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, ∃<em>y</em> ∈ <em>E</em>, <em>P</em>(<em>x</em>,<em>y</em>)</span>
+- for every <span class="math inline"><em>x</em></span> in <span
+class="math inline"><em>D</em></span>, there exists a corresponding
+value <span class="math inline"><em>y</em></span> in <span
+class="math inline"><em>E</em></span>, such that <span
+class="math inline"><em>P</em>(<em>x</em>,<em>y</em>)</span> is true. -
+notice how each quantifying statement is chained together</p>
+<blockquote>
+<p>EXAMPLES: WTF SOBSOBSOBSOB</p>
+</blockquote>
+<h2 id="negation-of-statements-with-multiple-quantifiers">Negation of
+Statements with Multiple Quantifiers</h2>
+<p>We can find the negation of multiple quantifier statements with the
+rules to negate single quantifier statements (<a
+href="#negations-of-quantified-statements">Negations of Quantified
+Statements</a>).</p>
+<p>Consider the statement <span
+class="math inline">∀<em>x</em> ∈ <em>D</em>, ∃<em>y</em> ∈ <em>E</em>, <em>P</em>(<em>x</em>,<em>y</em>)</span>,
+the negation of this statement can be written as <span
+class="math display">$$\begin{align*}
+    \lnot (\forall x \in D, \exists y \in E, P(x, y))
+&amp;\equiv  \exists x \in D, \lnot (\exists y \in E, P(x, y)) \\
+    &amp; \equiv \exists x \in D, \forall y \in E, \lnot P(x, y). \\
+\end{align*}$$</span> Similarly, for the flipped statements <span
+class="math inline">∃<em>x</em> ∈ <em>D</em>, ∀<em>y</em> ∈ <em>E</em>, <em>P</em>(<em>x</em>,<em>y</em>)</span>,
+the negation can be written as <span
+class="math display">$$\begin{align*}
+    \lnot (\exists x \in D, \forall y \in E, P(x, y))
+&amp;\equiv  \forall x \in D, \lnot (\forall y \in E, P(x, y) )\\
+    &amp; \equiv \forall x \in D, \exists y \in E, \lnot P(x, y). \\
+\end{align*}$$</span></p>
+<p>In summary, - <span class="math inline">$\boxed{\lnot (\forall x \in
+D, \exists y \in E, P(x, y)) \equiv \exists x \in D, \forall y \in E,
+\lnot P(x, y)}$</span> - <span class="math inline">$\boxed{\lnot
+(\exists x \in D, \forall y \in E, P(x, y)) \equiv \forall x \in D,
+\exists y \in E, \lnot P(x, y)}$</span></p>
+<blockquote>
+<p>examples: bro this is gonna be so long</p>
+</blockquote>
+<h2 id="order-of-quantifiers">Order of Quantifiers</h2>
+<p>In a statement containing both <span class="math inline">∀</span> and
+<span class="math inline">∃</span>, <strong>changing the order</strong>
+of the quantifiers can <strong>significantly change</strong> the meaning
+of the statement. ORDER MATTERS FOR DIFFERENT QUANTIFIERS. <span
+class="math display">$$\boxed{\forall x \in D, \exists y \in E, P(x,y)
+\not \equiv \exists y \in E, \forall x \in D, P(x,y)}$$</span> &gt;
+Example: &gt; <span class="math inline">∀</span> person x, <span
+class="math inline">∃</span> a person y that x loves y<br />
+&gt; <span class="math inline">∃</span> a person y such that <span
+class="math inline">∀</span> person x, x loves y &gt; &gt; those be
+different u know !!</p>
+<p>However, the order does <strong>not</strong> matter for
+<strong>same</strong> quantifiers. <span
+class="math display">$$\boxed{\forall x \in D, \forall y \in E, P(x, y)
+\equiv \forall y \in E, \forall x \in D, P(x, y)}$$</span> or <span
+class="math display">$$\boxed{\exists x \in D, \exists y \in E, P(x, y)
+\equiv \exists y \in E, \exists x \in D, P(x, y)}$$</span></p>
+<blockquote>
+<p>more examples ig:</p>
+</blockquote>
+<h2 id="formal-logic-notation">Formal Logic Notation</h2>
+<p>This method writes statements fully symbolically without any random
+english words. There are two key facts to know about formal logic
+notation <span class="math display">$$\boxed{\begin{align*}
+    \forall x \in D, P(x) &amp;\equiv \forall x (x \in D \implies
+P(x))\\
+    \exists x \in E, P(x) &amp;\equiv \exist x (x \in E \land P(x))
+\end{align*}}$$</span> To understand those representations, its
+imperative to look at the truth set of <span
+class="math inline"><em>P</em>(<em>x</em>)</span> that produces the
+correct result. Note that the one with <span
+class="math inline">∀</span> considers vacuous truth: if no elements
+<span class="math inline"><em>x</em> ∈ <em>D</em></span> then the
+statement is still true. However, if no element <span
+class="math inline">∃</span> in <span
+class="math inline"><em>E</em></span>, the whole statement is false.</p>
+<blockquote>
+<p>Example: oh no no no no no no i wont do it</p>
+</blockquote>
+<h1 id="sets">Sets</h1>
+<p>A collection if definite and separate objects (every element in a set
+is unique) - <span
+class="math inline"><em>A</em> = {1, 2, 3, 4, 5}</span> - <span
+class="math inline"><em>A</em></span> is a set and <span
+class="math inline">1, 2, 3, 4, 5</span> are elements ## Set Membership
+and Subsets</p>
+<h3 id="subseteq-is-used-of-subsets"><span class="math inline">⊆</span>
+is used of subsets</h3>
+<ul>
+<li><span
+class="math inline"><em>A</em> ⊆ <em>B</em> ⇔ (∀<em>x</em>,<em>x</em>∈<em>A</em>⟹<em>x</em>∈<em>B</em>)</span></li>
+<li>Negation: <span class="math inline">$A \not \subseteq B \iff \exist
+x, x \in A \land x \not \in B$</span></li>
+<li>every element in <span class="math inline"><em>A</em></span> is in
+the set <span class="math inline"><em>B</em></span>, <span
+class="math inline"><em>A</em></span> and <span
+class="math inline"><em>B</em></span> can be the same.</li>
+</ul>
+<p>We can also say that all of <span
+class="math inline"><em>B</em></span> is contained in <span
+class="math inline"><em>A</em></span></p>
+<h3 id="a-sub-b-a-a-proper-subset-of-b"><span class="math inline">$A
+\sub B$</span>, <span class="math inline"><em>A</em></span> a proper
+subset of <span class="math inline"><em>B</em></span></h3>
+<ul>
+<li><span class="math inline"><em>A</em> ⊆ <em>B</em></span> , and</li>
+<li>there is at least one element in B that is not in A</li>
+<li>sets A and B are not the same</li>
+</ul>
+<p>Similarly, this means all of <span
+class="math inline"><em>B</em></span> is strictly contained in <span
+class="math inline"><em>A</em></span></p>
+<h3 id="in-vs-subseteq"><span class="math inline">∈</span> vs <span
+class="math inline">⊆</span></h3>
+<ul>
+<li><span class="math inline">∈</span> acts on elements of a set
+<ul>
+<li><span class="math inline"><em>x</em> ∈ <em>A</em></span> if the
+<em>element</em> <span class="math inline"><em>x</em></span> is in the
+<em>set</em> <span class="math inline"><em>A</em></span></li>
+</ul></li>
+<li><span class="math inline">⊆</span> acts on two different sets
+<ul>
+<li><span class="math inline"><em>A</em> ⊆ <em>B</em></span>, if all the
+elements of <span class="math inline"><em>A</em></span> are in the set
+<span class="math inline"><em>B</em></span></li>
+</ul></li>
+</ul>
+<h2 id="set-operations">Set operations</h2>
+<ul>
+<li>they consume mutliple sets and produce a set as an output</li>
+</ul>
+<h3 id="union-cup">Union <span class="math inline">∪</span></h3>
+<ul>
+<li><span class="math inline"><em>A</em> ∪ <em>B</em></span>, set of all
+elements in <span class="math inline"><em>A</em></span>
+<strong>or</strong> <span class="math inline"><em>B</em></span></li>
+<li><span
+class="math inline">∀<em>x</em>, <em>x</em> ∈ <em>A</em> ∨ <em>x</em> ∈ <em>B</em></span></li>
+</ul>
+<h3 id="intersection-cap">Intersection <span
+class="math inline">∩</span></h3>
+<ul>
+<li><span class="math inline"><em>A</em> ∩ <em>B</em></span>, set of all
+elements in <span class="math inline"><em>A</em></span>
+<strong>and</strong> <span class="math inline"><em>B</em></span></li>
+<li><span
+class="math inline">∀<em>x</em>, <em>x</em> ∈ <em>A</em> ∧ <em>x</em> ∈ <em>B</em></span></li>
+</ul>
+<h3 id="difference--">Difference <span class="math inline">−</span></h3>
+<ul>
+<li><span class="math inline"><em>A</em> − <em>B</em></span>, set of all
+elements in <span class="math inline"><em>A</em></span> but
+<strong>not</strong> in <span class="math inline"><em>B</em></span></li>
+<li><span
+class="math inline">∀<em>x</em>, <em>x</em> ∈ <em>A</em> ∧ ¬<em>x</em> ∈ <em>B</em></span></li>
+</ul>
+<h3 id="complement-c">Complement <span
+class="math inline"><em>c</em></span></h3>
+<ul>
+<li><span class="math inline"><em>A</em><sup><em>c</em></sup></span>,
+set of all elements in <span class="math inline"><em>U</em></span>
+(everything) that are not in <span
+class="math inline"><em>A</em></span></li>
+<li>this is similar to the negation <span
+class="math inline">∀<em>x</em>, <em>x</em> ∉ <em>A</em></span></li>
+</ul>
+<h2 id="important-sets-in-math">Important sets in Math</h2>
+<ul>
+<li><p>Integers</p>
+<ul>
+<li><span class="math inline">ℤ = {… − 2,  − 1, 0, 1, 2…}</span></li>
+</ul></li>
+<li><p>Positive Integers</p>
+<ul>
+<li><span
+class="math inline">ℤ<sup>+</sup> = {<em>x</em> ∈ ℤ, <em>x</em> &gt; 0}</span></li>
+</ul></li>
+<li><p>Non-zero integers</p>
+<ul>
+<li><span
+class="math inline">ℤ<sup>*</sup> = {<em>x</em> ∈ ℤ, <em>x</em> ≠ 0}</span></li>
+</ul></li>
+<li><p>Natural Numbers</p>
+<ul>
+<li><span
+class="math inline">ℕ<sub>0</sub> = {0, 1, 2, 3, …}</span></li>
+<li><span class="math inline">ℕ<sub>1</sub> = {1, 2, 3, …}</span></li>
+</ul></li>
+<li><p>Irrational Numbers</p>
+<ul>
+<li><span class="math inline">$\overline{\mathbb{Q}} = \{x \in
+\mathbb{R}, x \not \in \mathbb{Q}\}$</span></li>
+</ul></li>
+<li><p>Rational numbers</p>
+<ul>
+<li><span class="math inline">$\mathbb{Q} = \{\frac{a}{b} \; | \; a \in
+\mathbb{Z} \land b \in \mathbb{Z}\}$</span></li>
+</ul></li>
+<li><p>Real numbers</p>
+<ul>
+<li><span class="math inline">ℝ = {…}</span></li>
+</ul></li>
+<li><p>Empty set</p></li>
+<li><p><span class="math inline">{ } or ∅</span></p></li>
+<li><p>Universal Set: everything!</p>
+<ul>
+<li><span class="math inline">𝕌</span></li>
+</ul></li>
+<li><p>Power set</p>
+<ul>
+<li>given a set <span class="math inline"><em>A</em></span>, the
+powerset of <span class="math inline"><em>A</em></span> is the set of
+all possible subsets of <span class="math inline"><em>A</em></span></li>
+<li><span
+class="math inline">ℙ({<em>x</em>,<em>y</em>}) = {∅, {<em>x</em>}, {<em>y</em>}, {<em>x</em>, <em>y</em>}}</span></li>
+<li><span
+class="math inline">∀<em>x</em> ∈ ℙ(<em>A</em>), <em>x</em> ⊆ <em>A</em></span></li>
+<li>the powerset of U is all of the possible sets that can exist</li>
+</ul></li>
+</ul>
+<h2 id="counting-with-quantifiers">Counting with Quantifiers</h2>
+<h3 id="at-least-n-items-with-property-p"><strong>At least</strong>
+<span class="math inline"><em>n</em></span> items with property <span
+class="math inline"><em>P</em></span>:</h3>
+<p><span class="math display">$$\boxed{\exists x_1 \in D,\exists x_1 \in
+D,...\exists x_n \in D,P(x_1)\land P(x_2) \land ... \land P(x_n) \land
+(x_1 \not = x_2) \land ... }$$</span></p>
+<h3 id="at-most-n-items-with-property-p"><strong>At most</strong> <span
+class="math inline"><em>n</em></span> items with property <span
+class="math inline"><em>P</em></span>:</h3>
+<p><span class="math display">$$\exist x_1 \in D, ..., \exist x_n \in D,
+\forall y \in D, (x_1 \not = y) \land ... \land (x_n \not = y) \implies
+P(x) \lor ... \lor P(n) \land \lnot P(y)$$</span> Alternatively, it can
+also be: <span class="math display">$$\boxed{\forall x_1 \in D, ...,
+\forall x_{n+1} \in D, (P(x_1) \land...\land P(x_{n+1})) \implies ((x_1
+= x_2) \lor ... \lor (x_{n+1} = ...))}$$</span> At most means: if there
+are at most <span class="math inline"><em>n</em></span> items, then if
+<span class="math inline"><em>n</em> + 1</span> items are true, then
+there must be one repeat.</p>
+<h3 id="exactly-n-items-with-property-p"><strong>Exactly</strong> <span
+class="math inline"><em>n</em></span> items with property <span
+class="math inline"><em>P</em></span>:</h3>
+<p>At most <span class="math inline"><em>n</em></span>
+<strong>and</strong> at least <span
+class="math inline"><em>n</em></span> <span
+class="math display">$$\exist x_1 \in D, ..., \exist x_n \in D, \forall
+y \in D, (x_1 \not = y) \land ... \land (x_n \not = y) \implies P(x)
+\land ... \land P(n) \land \lnot P(y) $$</span></p>
+<h2 id="conclusion">CONCLUSION</h2>
+<p>BRUH BRUH BRUH # Worksheet</p>

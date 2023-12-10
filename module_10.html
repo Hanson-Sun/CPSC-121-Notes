@@ -1,0 +1,193 @@
+<h1 id="strong-induction-proofs">Strong Induction Proofs</h1>
+<h2 id="goals">Goals</h2>
+<h2 id="strong-induction">Strong Induction</h2>
+<p>Strong induction is similar to weak induction in that they both have
+an inductive step. However, strong induction assumes that all values
+from 0 to <span class="math inline"><em>k</em></span> are true, opposed
+to just <span class="math inline"><em>P</em>(<em>k</em>)</span> being
+true.</p>
+<p>Use strong induction if we might need to go <strong>multiple</strong>
+inductive steps backwards. For higher degree recursion problems. It has
+looser constraints on the inductive step compared to weak induction.</p>
+<p><strong>IMPORTANT:</strong> just assume up to <span
+class="math inline"><em>n</em></span>, not <span
+class="math inline"><em>n</em> + 1</span>. This is probably easier -
+bases cases need to be continuous, or else they arent showing anything -
+bases cases need to cover everything between the recursive jump (<span
+class="math inline">4</span> bases cases for <span
+class="math inline"><em>n</em> − 4</span>)</p>
+<h3 id="principle-of-strong-mathematical-induction">Principle of Strong
+Mathematical Induction</h3>
+<p>Let <span class="math inline"><em>P</em>(<em>n</em>)</span> be a
+property that is defined for integers <span
+class="math inline"><em>n</em></span>, and let <span
+class="math inline"><em>a</em></span> and <span
+class="math inline"><em>b</em></span> be fixed integers with <span
+class="math inline"><em>a</em> ≤ <em>b</em></span>. Suppose the
+following two statements are true 1. <span
+class="math inline"><em>P</em>(<em>a</em>), <em>P</em>(<em>a</em>+1), ..., <em>P</em>(<em>b</em>)</span>
+are all true (basis step) 2. For every integer <span
+class="math inline"><em>k</em> ≥ <em>b</em></span>, if <span
+class="math inline"><em>P</em>(<em>i</em>)</span> is true for each
+integer <span class="math inline"><em>i</em></span> from <span
+class="math inline"><em>a</em></span> through <span
+class="math inline"><em>k</em></span>, then <span
+class="math inline"><em>P</em>(<em>k</em>+1)</span> is true (inductive
+step) Then the statement <span
+class="math display">∀<em>n</em> ≥ <em>a</em>, <em>P</em>(<em>n</em>)</span>
+is true. (The supposition that <span
+class="math inline"><em>P</em>(<em>i</em>)</span> is true for each
+integer <span class="math inline"><em>i</em></span> from a through <span
+class="math inline"><em>k</em></span> is called the inductive
+hypothesis. Another way to state the inductive hypothesis is to say that
+<span
+class="math inline"><em>P</em>(<em>a</em>), <em>P</em>(<em>a</em>+1), ..., <em>P</em>(<em>k</em>)</span>
+are all true.)</p>
+<h2 id="writing-strong-induction-proofs">Writing Strong Induction
+Proofs</h2>
+<ol type="1">
+<li>Show that <span class="math inline"><em>P</em>(0)</span> and <span
+class="math inline"><em>P</em>(1)</span> is true</li>
+<li>State the statement that is to be proved as <span
+class="math inline"><em>P</em>(<em>k</em>)</span></li>
+<li>Show that for every integer <span
+class="math inline"><em>k</em> ≥ 1</span>, if <span
+class="math inline"><em>P</em>(<em>i</em>)</span> is true for each
+integer <span class="math inline"><em>i</em></span> from 0 through <span
+class="math inline"><em>k</em></span>, then <span
+class="math inline"><em>P</em>(<em>k</em>+1)</span> is also true
+(inductive hypothesis)</li>
+<li>Prove that <span class="math inline"><em>P</em>(<em>k</em>+1)</span>
+is true using the the fact that <span
+class="math inline"><em>P</em>(0)</span> to <span
+class="math inline"><em>P</em>(<em>k</em>)</span> is assumed to be true.
+<ul>
+<li>“Since we have proved the basis step and the inductive step of the
+strong mathematical induction, we conclude that the given statement is
+true”</li>
+</ul></li>
+<li>Conclude that the statement is true.</li>
+</ol>
+<h2 id="use-cases-and-hints">Use cases and Hints</h2>
+<p>Generally used for proving recurrence relations – especially ones
+that are of higher order.</p>
+<p>Some sequences may be easier with strong mathematical induction – the
+use of previous terms may be easier to compute mathematically</p>
+<p>The amount of base cases are usually indicative of how the inductive
+step should be applied - <span class="math inline"><em>k</em></span>
+base cases usually mean the inductive step will be <span
+class="math inline"><em>n</em> − <em>k</em></span> - similar, and
+argument that jumps from <span class="math inline"><em>n</em></span> to
+<span class="math inline"><em>n</em> + <em>k</em></span> will require
+<span class="math inline"><em>n</em></span> base cases. - use the # of
+base cases as a hint!</p>
+<p>To determine how many base cases are required, start from the lower
+bound and go up. - once the pattern can repeat fully, the amount of base
+cases are good! - only need as many base cases to sustain recursion</p>
+<h2
+id="theorems-that-are-actually-examples-but-im-too-lazy-to-write-them-down">Theorems
+(that are actually examples but im too lazy to write them down)</h2>
+<h3
+id="existence-and-uniqueness-of-binary-integer-representations">Existence
+and Uniqueness of Binary Integer Representations</h3>
+<h3 id="well-ordering-principle-for-integers">Well Ordering Principle
+for Integers</h3>
+<p>Let <span class="math inline"><em>S</em></span> be a set of integers
+containing one or more integers all of which are greater than some fixed
+integer. Then <span class="math inline"><em>S</em></span> has a least
+element.</p>
+<h3 id="quotient-remainder-theorem">Quotient Remainder Theorem</h3>
+<p>Given any integer <span class="math inline"><em>n</em></span> and any
+positive integer <span class="math inline"><em>d</em></span>, there
+exist integers <span class="math inline"><em>q</em></span> and <span
+class="math inline"><em>r</em></span> such that <span
+class="math display"><em>n</em> = <em>d</em><em>q</em> + <em>r</em>  
+and   0 ≤ <em>r</em> &lt; <em>d</em></span></p>
+<h2 id="examples">Examples</h2>
+<blockquote>
+<p>Consider the relation: <span
+class="math display"><em>t</em><sub>1</sub> = 1</span> <span
+class="math display"><em>t</em><sub><em>n</em></sub> = <em>t</em><sub><em>f</em><em>l</em><em>o</em><em>o</em><em>r</em>(<em>n</em>/2)</sub> + <em>t</em><sub><em>c</em><em>e</em><em>i</em><em>l</em>(<em>n</em>/2)</sub> + 1, <em>n</em> ≥ 1</span>
+prove that <span
+class="math inline"><em>t</em><sub><em>n</em></sub> = 2<em>n</em> − 1</span></p>
+</blockquote>
+<p>Because this relationship may be moving more than one step back, we
+need to use strong induction.</p>
+<p><strong>Base Case</strong>: <span
+class="math inline"><em>n</em> = 1</span><br />
+<span
+class="math inline"><em>t</em><sub>1</sub> = 1 = 2 * 1 − 1</span></p>
+<p><strong>Induction Hypothesis</strong>: assume that <span
+class="math inline"><em>t</em><sub><em>k</em></sub> = 2<em>k</em> − 1</span>,
+for any positive integer <span
+class="math inline">1 ≤ <em>k</em> &lt; <em>n</em></span>. (from
+smallest base case to just before n)</p>
+<p><strong>Inductive step</strong>: consider an unspecified positive
+integer <span class="math inline"><em>n</em> &gt; 1</span>. By IH, we
+know that - <span
+class="math inline"><em>t</em><sub><em>f</em><em>l</em><em>o</em><em>o</em><em>r</em>(<em>n</em>/2)</sub> = 2<em>f</em><em>l</em><em>o</em><em>o</em><em>r</em>(<em>n</em>/2) − 1</span>
+- <span
+class="math inline"><em>t</em><sub><em>c</em><em>e</em><em>i</em><em>l</em>(<em>n</em>/2)</sub> = 2<em>c</em><em>e</em><em>i</em><em>l</em>(<em>n</em>/2) − 1</span>
+then we know <span
+class="math display"><em>t</em><sub><em>n</em></sub> = <em>t</em><sub><em>f</em><em>l</em><em>o</em><em>o</em><em>r</em>(<em>n</em>/2)</sub> + <em>t</em><sub><em>c</em><em>e</em><em>i</em><em>l</em>(<em>n</em>/2)</sub> + 1</span>
+<span
+class="math display"><em>t</em><sub><em>n</em></sub> = 2<em>f</em><em>l</em><em>o</em><em>o</em><em>r</em>(<em>n</em>/2) − 1 + 2<em>c</em><em>e</em><em>i</em><em>l</em>(<em>n</em>/2) − 1 + 1</span>
+<span
+class="math display"><em>t</em><sub><em>n</em></sub> = 2<em>f</em><em>l</em><em>o</em><em>o</em><em>r</em>(<em>n</em>/2) + 2<em>c</em><em>e</em><em>i</em><em>l</em>(<em>n</em>/2) − 1</span>
+<span
+class="math display"><em>t</em><sub><em>n</em></sub> = 2(<em>f</em><em>l</em><em>o</em><em>o</em><em>r</em>(<em>n</em>/2)+<em>c</em><em>e</em><em>i</em><em>l</em>(<em>n</em>/2)) − 1</span>
+<span
+class="math display"><em>t</em><sub><em>n</em></sub> = 2<em>n</em> − 1</span></p>
+<h2 id="practice">Practice !!</h2>
+<ol start="5" type="1">
+<li>Suppose that <span
+class="math inline"><em>e</em><sub>0</sub>, <em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>, ...</span>
+is a sequence defined as follows: <span
+class="math display"><em>e</em><sub>0</sub> = 12, <em>e</em><sub>1</sub> = 29,</span>
+<span
+class="math display"><em>e</em><sub><em>k</em></sub> = 5<em>e</em><sub><em>k</em> − 1</sub> − 6<em>e</em><sub><em>k</em> − 2</sub>, ∀<em>k</em> ∈ ℤ, <em>k</em> ≥ 2</span>
+Prove that <span
+class="math inline"><em>e</em><sub><em>n</em></sub> = 5 ⋅ 3<sup><em>n</em></sup> + 7 ⋅ 2<sup><em>n</em></sup>, ∀<em>n</em> ≥ 0</span>
+&gt; Solution<br />
+&gt; The proposition, <span
+class="math inline"><em>P</em>(<em>n</em>)</span> that we are trying to
+prove is as follows &gt; <span
+class="math display"><em>e</em><sub><em>n</em></sub> = 5 ⋅ 3<sup><em>n</em></sup> + 7 ⋅ 2<sup><em>n</em></sup>, ∀<em>n</em> ≥ 0.</span>
+&gt; <span class="math inline"><em>P</em>(0)</span> is true because
+<span
+class="math inline">12 = 5 ⋅ 3<sup>0</sup> + 7 ⋅ 2<sup>0</sup></span>.
+Similarly, &gt; <span class="math inline"><em>P</em>(1)</span> is also
+true because <span
+class="math inline">29 = 5 ⋅ 3<sup>1</sup> + 7 ⋅ 2<sup>1</sup>.</span>
+&gt; &gt; Suppose <span
+class="math inline"><em>P</em>(<em>n</em>)</span> is true for <span
+class="math inline">1 ≤ <em>n</em> ≤ <em>k</em></span>, we then try to
+show that <span class="math inline"><em>P</em>(<em>k</em>+1)</span> is
+also true. &gt; <span
+class="math display">5<em>e</em><sub><em>k</em></sub> − 6<em>e</em><sub><em>k</em> − 1</sub> = 5 ⋅ 3<sup><em>k</em> + 1</sup> + 7 ⋅ 2<sup><em>k</em> + 1</sup></span>
+&gt; since we know <span
+class="math inline"><em>P</em>(<em>k</em>)</span> and <span
+class="math inline"><em>P</em>(<em>k</em>−1)</span></li>
+</ol>
+<blockquote>
+<p><img src = "assets/w10q3.png"> Base cases:</p>
+<p><span
+class="math inline"><em>S</em>(1) = 4<em>c</em> &lt; 8<em>c</em></span><br />
+<span
+class="math inline"><em>S</em>(2) = 12<em>c</em> &lt; 16<em>c</em></span><br />
+<span
+class="math inline"><em>S</em>(3) = 20<em>c</em> &lt; 24<em>c</em></span><br />
+Inductive hypothesis: assume true for <span
+class="math inline">3 ≤ <em>k</em> &lt; <em>n</em></span>.</p>
+<p>Inductive step: we try to prove for <span
+class="math inline"><em>n</em></span>. We know that <span
+class="math display"><em>S</em>(<em>n</em>) ≤ 2<em>c</em><em>n</em> + <em>S</em>(⌊3<em>n</em>/4⌋)</span>
+Moreover, by the inductive hypothesis, we know that <span
+class="math display"><em>S</em>(⌊3<em>n</em>/4⌋) ≤ 8<em>c</em> * ⌊3<em>n</em>/4⌋ ≤ 8<em>c</em> * 3<em>n</em>/4</span>
+So we get <span
+class="math display"><em>S</em>(<em>n</em>) ≤ 2<em>c</em><em>n</em> + 8<em>c</em> * ⌊3<em>n</em>/4⌋</span>
+<span
+class="math display"><em>S</em>(<em>n</em>) ≤ 2<em>c</em>(<em>n</em>+4*3<em>n</em>/4)</span>
+<span
+class="math display"><em>S</em>(<em>n</em>) ≤ 8<em>c</em><em>n</em></span></p>
+</blockquote>

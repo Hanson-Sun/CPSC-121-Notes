@@ -1,0 +1,348 @@
+<h1 id="module-1-propositional-logic-and-basic-logic-circuits">Module 1:
+Propositional Logic and Basic Logic Circuits</h1>
+<h2 id="goals">Goals</h2>
+<ol type="1">
+<li><p>Translate back and forth between simple natural language
+statements and propositional logic.</p></li>
+<li><p>Evaluate the truth of propositional logic statements using truth
+tables.</p></li>
+<li><p>Translate back and forth between propositional logic statements
+and circuits that assess the truth of those statements.</p></li>
+<li><p>Run an algorithm to systematically translate from a circuit to a
+propositional logic statement.</p></li>
+<li><p>Build computational systems to solve real problems, using both
+propositional logic expressions and equivalent digital logic
+circuits.</p></li>
+<li><p>Identify patterns in Truth Table in order to translate them into
+a propositional logic expression.</p></li>
+</ol>
+<h2 id="definitions">Definitions</h2>
+<p><strong>Argument</strong>: a sequence of statements aimed at
+demonstrating the truth of an assertion.</p>
+<p><strong>Conclusion</strong>: assertion at the end of the
+sequence.</p>
+<p><strong>Premises</strong>: preceding statements in argument.</p>
+<p>A <strong>statement</strong> (or <strong>proposition</strong>) is a
+sentence that is true or false but not both.</p>
+<p>Two digital logic circuits are <strong>equivalent</strong> if, and
+only if, their input/output tables are <strong>identical</strong>.</p>
+<p>A <strong>recognizer</strong> is a circuit that outputs a 1 for
+<strong>exactly one</strong> particular combination of input signals and
+outputs 0’s for <strong>all other</strong> combinations.</p>
+<h2 id="logical-equivalence">Logical Equivalence</h2>
+<ul>
+<li>denote with <span
+class="math inline"><em>p</em> ≡ <em>q</em></span></li>
+<li>logically equivalent if truth tables match.</li>
+<li>if they have equivalent form symbolically</li>
+</ul>
+<h2 id="tautologies-and-contradictions">Tautologies and
+Contradictions</h2>
+<ul>
+<li><strong>Tautology</strong>: a statement that is always
+<strong>true</strong></li>
+<li><strong>Contradiction</strong>: a statement that is always
+<strong>false</strong></li>
+</ul>
+<h2 id="simplifying-statement-forms">Simplifying Statement Forms</h2>
+<ul>
+<li>See <strong><a href="evaluation_rules.md">Evaluation
+Rules</a></strong> for a full list</li>
+</ul>
+<blockquote>
+<p><strong>Example</strong>:</p>
+</blockquote>
+<h2 id="truth-tables">Truth tables</h2>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 14%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>p</th>
+<th>q</th>
+<th>r</th>
+<th><span class="math inline">(<em>p</em>∧<em>q</em>)</span></th>
+<th><span class="math inline">¬<em>r</em></span></th>
+<th><span
+class="math inline">(<em>p</em>∧<em>q</em>) ∨ ¬<em>r</em></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>F</strong></td>
+<td><strong>F</strong></td>
+<td><strong>F</strong></td>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr class="even">
+<td><strong>F</strong></td>
+<td><strong>F</strong></td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td><strong>F</strong></td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr class="even">
+<td><strong>F</strong></td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr class="even">
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+</tr>
+<tr class="even">
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+</tr>
+</tbody>
+</table>
+<p>First column should have <span
+class="math inline">2<sup><em>n</em> − 1</sup></span>
+<strong>F</strong>s and <span
+class="math inline">2<sup><em>n</em> − 1</sup></span>
+<strong>T</strong>s, for a total of <span
+class="math inline">2<sup><em>n</em></sup></span> combinations. Each
+column is then reduced by half with alternating sets of T and F until
+they alternate by 1.</p>
+<h2 id="digital-logic-circuits">Digital Logic Circuits</h2>
+<blockquote>
+<p>On <span class="math inline">→</span> 1 or True, Off <span
+class="math inline">→</span> 0 or False</p>
+<h3 id="circuit-rules">Circuit Rules</h3>
+<ul>
+<li>Never combine two input wires</li>
+<li>A single input wire can be split partway and used as input for two
+separate gates</li>
+<li>An output wire can be used as input</li>
+<li>No output gate can feed back into that gate (no recursion !!)</li>
+<li>Gates can have multiple inputs</li>
+</ul>
+</blockquote>
+<h2 id="finding-a-boolean-expression-for-a-circuit">Finding a Boolean
+Expression for A circuit</h2>
+<p>Start from the last logic gate and slowly build downwards; or start
+from the leaf nodes and build upwards. &gt;
+<strong>Example</strong>:<br />
+&gt;
+<img src = "assets/circuit_example.png" width = "100%" style = "max-width: 40rem">
+</img> &gt; <span class="math display">$$\begin{align*}
+    x &amp;\equiv (...) \land \lnot ( ...) \\
+      &amp;\equiv  ((...) \lor (...)) \land \lnot (...) \\
+      &amp; \equiv ((a \oplus c) \lor (a \oplus b)) \land \lnot
+((a\oplus b) \oplus (c\oplus d))
+\end{align*} $$</span> &gt; ## Finding a Circuit That Corresponds to a
+Given Input/Output Table 1. Identify all rows that out put 1 (true) 2.
+Construct an AND expression that links the inputs to produce true - In
+input row: P if P is true, <span class="math inline">¬<em>P</em></span>
+if P is false 3. Connect the expression for each of the rows with OR -
+simplify if possible</p>
+<ol start="4" type="1">
+<li>Try to generalize and find patterns in rows !! (think real hard you
+know)
+<ul>
+<li>group rows with similar characteristics !! 💥</li>
+</ul></li>
+</ol>
+<blockquote>
+<p><strong>Example</strong>: Construct the boolean expresison for</p>
+<table>
+<thead>
+<tr class="header">
+<th>P</th>
+<th>Q</th>
+<th>R</th>
+<th>S</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>row 1: <span
+class="math inline"><em>P</em> ∧ <em>Q</em> ∧ <em>R</em></span>; Row 3:
+<span class="math inline"><em>P</em> ∧ ¬<em>Q</em> ∧ <em>R</em></span>;
+Row 4: <span
+class="math inline"><em>P</em> ∧ ¬<em>Q</em> ∧ ¬<em>R</em></span></p>
+<p><span
+class="math inline">∴ <em>S</em> ≡ (<em>P</em>∧<em>Q</em>∧<em>R</em>) ∨ (<em>P</em>∧¬<em>Q</em>∧<em>R</em>) ∨ (<em>P</em>∧¬<em>Q</em>∧¬<em>R</em>)</span></p>
+</blockquote>
+<h2 id="simplifying-combinational-circuits">Simplifying Combinational
+Circuits</h2>
+<ol type="1">
+<li>write cicuit in logic form</li>
+<li>simplify the statement with the <strong><a
+href="evaluation_rules.md">Evaluation Rules</a></strong></li>
+</ol>
+<h2
+id="finding-statement-from-truth-table-with-karnaugh-map-k-map">Finding
+Statement From Truth Table with Karnaugh Map (K-map)</h2>
+<ol type="1">
+<li>split the inputs into groups
+<ul>
+<li>4 inputs <span class="math inline">→</span> 2 sets of 2 (AB,
+CD)</li>
+<li>3 inputs <span class="math inline">→</span> 1 set of 2, 1 single
+(AB, C)</li>
+</ul></li>
+<li>Make rows each set, and write out all the combinations (<span
+class="math inline"><em>A</em><em>B</em></span>, <span
+class="math inline">¬<em>A</em><em>B</em></span>, <span
+class="math inline"><em>A</em>¬<em>B</em></span>, <span
+class="math inline">¬<em>A</em>¬<em>B</em></span> with <span
+class="math inline"><em>C</em></span> and <span
+class="math inline">¬<em>C</em></span>)</li>
+<li>Simplify with AND between each grouping
+<ul>
+<li>groupings can only be VERTICAL and HORIZONTAL</li>
+<li><span class="math inline"><em>P</em></span> and <span
+class="math inline">¬<em>P</em></span> cancel out</li>
+</ul></li>
+<li>Combine each grouping with OR</li>
+</ol>
+<blockquote>
+<p>Example: Karnaugh Map<br />
+<img src = "assets/kmap.png"></img><br />
+The green group: ~C and D and C and D and ~A and B and A and B <span
+class="math inline">→</span> ~C and D and B<br />
+Do the rest for the other groups and we get:<br />
+<span
+class="math inline">(<em>C</em>∧¬<em>D</em>∧¬<em>B</em>) ∨ (¬<em>C</em>∧¬<em>D</em>∧<em>A</em>) ∨ (¬<em>A</em>∧<em>C</em>∧<em>D</em>) ∨ (¬<em>A</em>∧<em>B</em>∧¬<em>C</em>)</span></p>
+</blockquote>
+<h2 id="segment-displays">7-segment Displays</h2>
+<p><img src = "assets/7segdisp.png"></img> - we will need 4 binary
+inputs for a total of <span
+class="math inline">2<sup>4</sup> = 16</span> possible outputs. Each
+corresponding binary input set will correspond to a configuration in the
+display. - Imagine that each input corresponds to the behaviour of a
+particular segment - the following example is taken from
+<strong>worksheet 1 in module 1</strong>.</p>
+<p>If we examine the bottom left segment, we arrive at the following
+truth table &gt;|<span
+class="math inline"><em>x</em><sub>3</sub></span>|<span
+class="math inline"><em>x</em><sub>2</sub></span>|<span
+class="math inline"><em>x</em><sub>1</sub></span>|<span
+class="math inline"><em>x</em><sub>0</sub></span>|LED| &gt;|-|-|-|-|-|
+&gt;|0|0|0|0|1| &gt;|0|0|0|1|0| &gt;|0|0|1|0|1| &gt;|0|0|1|1|0|
+&gt;|0|1|0|0|0| &gt;|0|1|0|1|0| &gt;|0|1|1|0|1| &gt;|0|1|1|1|0|
+&gt;|1|0|0|0|1| &gt;|1|0|0|1|0|</p>
+<ul>
+<li><p>from looking real hard, we can simplfy the expression to <span
+class="math display">¬<em>x</em><sub>0</sub> ∧ ¬(¬<em>x</em><sub>3</sub>∧<em>x</em><sub>2</sub>∧¬<em>x</em><sub>1</sub>∧¬<em>x</em><sub>0</sub>)</span></p></li>
+<li><p>we realize that 4 is the only exception to the rules <span
+class="math inline">¬<em>x</em><sub>0</sub></span>, hence it must be
+<span class="math inline">¬<em>x</em><sub>0</sub></span> AND not the row
+for 4.</p></li>
+<li><p>if we simplify further, <span
+class="math display">$$\begin{align*}
+\lnot x_0 \land \lnot ( \lnot x_3 \land x_2 \land \lnot x_1 \land \lnot
+x_0) &amp;\equiv \lnot x_0 \land  (  x_3 \lor \lnot x_2 \lor x_1
+\lor  x_0)\\
+&amp;\equiv \lnot x_0 \land  ( x_3 \lor \lnot x_2 \lor x_1)
+\end{align*}$$</span></p></li>
+<li><p>we used De Morgan’s law to remove the invertor. We then use the
+distributive term to remove <span
+class="math inline"><em>x</em><sub>0</sub></span>. Alternatively, we can
+also think of it as “<strong>all even numbers except 4 and
+5</strong>”</p></li>
+<li><p>These two are not logically equivalent because the truth tables
+are different. However, this doesnt matter as it gets cut off because
+only 10 digits are required.</p></li>
+<li><p>question 7: top-right segment, is only off for 5 and 6 (<span
+class="math inline">0101, 0110</span>) <span
+class="math display">$$\begin{align*}
+\lnot ((\lnot x_3 \land x_2 \land \lnot x_1 \land x_0 ) \lor (\lnot x_3
+\land x_2 \land x_1 \land \lnot x_0)\\
+\equiv \lnot ((\lnot x_3 \land x_2) \land (x_1 \oplus x_0))
+\end{align*}$$</span></p></li>
+</ul>

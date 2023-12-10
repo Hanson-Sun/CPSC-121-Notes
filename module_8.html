@@ -1,0 +1,116 @@
+<h1 id="indirect-proofs">Indirect Proofs</h1>
+<h2 id="goals">Goals:</h2>
+<ul>
+<li><p>How to apply contrapositive on a proof.</p></li>
+<li><p>How to apply contradiction on a proof.</p></li>
+<li><p>Devise and attempt multiple different, appropriate proof
+strategies.</p></li>
+<li><p>Check why indirect proofs are valid.</p></li>
+<li><p>Practice indirect proofs and identify common strategies used on
+those proofs</p></li>
+</ul>
+<h2 id="method-of-proof-by-contradiction">Method of Proof by
+Contradiction</h2>
+<p>Because the negation of a statement and the original statement cannot
+be both true, if we show the negation is a contradiction, the original
+statement must be true. The method of contradiction is as follow:</p>
+<ol type="1">
+<li><p>Suppose the statement to br proved is false. That means, suppose
+the negation of the statement is true.</p></li>
+<li><p>Show that this supposition leads logically to a
+contradiction</p></li>
+<li><p>Conclude that the statement to be proved is true</p></li>
+</ol>
+<h3 id="use-cases">Use cases</h3>
+<p>There are no exact cases where proof by induction should be used,
+however, where are some general cases where it might be easier than
+direct proofs - to show there is no objects that satisfy a property - to
+show a certain object doesn’t have a property</p>
+<h2 id="argument-by-contrapositions">Argument by Contrapositions</h2>
+<p>Because the contrapositive is logically equivalent with the original
+statement, proving the contrapositive is the same as proving the
+original statement. The general steps of an argument by contraposition
+is as follows: 1. Express the statement to be proved in the form <span
+class="math display">∀<em>x</em> ∈ <em>D</em>, <em>P</em>(<em>x</em>) ⟹ <em>Q</em>(<em>x</em>)</span>
+(this can be done mentally) 2. Rewrite the statement in contrapositive
+form <span class="math display">$$\exist x \in D, \lnot Q(x) \implies
+\lnot P(x)$$</span> (this step may also be done mentally)</p>
+<ol start="3" type="1">
+<li>Prove the contrapositive by a direct proof.
+<ol type="a">
+<li>suppose <span class="math inline"><em>x</em></span> is a particular
+but arbitrarily element of <span class="math inline"><em>D</em></span>
+such that <span class="math inline"><em>Q</em>(<em>x</em>)</span> is
+false (the hypothesis is true)</li>
+<li>Show that <span class="math inline"><em>P</em>(<em>x</em>)</span> is
+false (the conclusion is true)</li>
+</ol></li>
+</ol>
+<h3 id="use-cases-1">Use cases</h3>
+<p>Like before, argument by contraposition also has no direct use cases.
+However, there are some situations where it might be easier than using
+direct proofs. - contraposition CANNOT be used for simple statements
+with not contrapositive (there must be an implication!), ie “<span
+class="math inline">$\sqrt{2}$</span> is irrational” cannot be proved
+with contraposition. - contraposition may be useful if <span
+class="math inline"><em>Q</em>(<em>x</em>)</span> is easier to prove
+than <span class="math inline"><em>P</em>(<em>x</em>)</span> – it is
+easier to work with mathematically. “If the Square of an Integer Is
+Even, Then the Integer Is Even” - easier if the negation of the
+statement is complex</p>
+<h2
+id="relation-between-proof-by-contradiction-and-proof-by-contraposition">Relation
+between Proof by Contradiction and Proof by Contraposition</h2>
+<p>Contraposition: Suppose <span
+class="math inline"><em>x</em> ∈ <em>D</em></span>, such that <span
+class="math inline">¬<em>Q</em>(<em>x</em>)</span> — steps —&gt; <span
+class="math inline">¬<em>P</em>(<em>x</em>)</span> - the conclusion is
+simply known</p>
+<p>Contradiction: Suppose <span class="math inline">$\exist x \in
+D$</span> such that <span
+class="math inline"><em>P</em>(<em>x</em>) ∧ ¬<em>Q</em>(<em>x</em>)</span>
+—- steps —-&gt; Contradiction: <span
+class="math inline"><em>P</em>(<em>x</em>) ∧ ¬<em>P</em>(<em>x</em>)</span>
+- the conclusion from the proof may not be obvious</p>
+<p>The steps are quite similar, but the context and goal is different.
+Don’t mix these up!</p>
+<h2 id="proof-as-a-problem-solving-tool">Proof as a Problem Solving
+Tool</h2>
+<p>There is no clearcut difference, just think about it :sob:. Just
+practice doing more proofs fr!!!!!!</p>
+<h2 id="worksheet">Worksheet</h2>
+<blockquote>
+<ol type="1">
+<li>if <span class="math inline"><em>n</em><sup>3</sup> + 5</span> is
+off, then <span class="math inline"><em>n</em></span> is even</li>
+</ol>
+<p>Contrapositive <span
+class="math inline"><em>O</em><em>d</em><em>d</em>(<em>n</em>) ⟹ <em>E</em><em>v</em><em>e</em><em>n</em>(<em>n</em><sup>3</sup>+5)</span>
+assume n is odd <span
+class="math display"><em>n</em> = 2<em>x</em> + 1</span> <span
+class="math display"><em>n</em><sup>3</sup> + 5 = (<em>o</em><em>d</em><em>d</em>) + <em>o</em><em>d</em><em>d</em> = <em>e</em><em>v</em><em>e</em><em>n</em></span></p>
+</blockquote>
+<blockquote>
+<ol start="2" type="1">
+<li>if the sum of two real numbers is smaller than 50, then at least one
+of those numbers is smaller than 25</li>
+</ol>
+<p>Contrapositive: none of those numbers is smaller than 25, the sum of
+two real numbers is larger than 50. <span
+class="math display"><em>a</em> + <em>b</em>,  <em>a</em> ∧ <em>b</em> &gt; 25</span>
+<span
+class="math display"><em>a</em> + <em>b</em> &gt; 25 + 25 = 50</span></p>
+</blockquote>
+<blockquote>
+<ol start="3" type="1">
+<li>given a positive integer n, if <span
+class="math inline">2<sup><em>n</em></sup> − 1</span> is a prime, then n
+is also a prime</li>
+</ol>
+<p>Contrapositive: <span
+class="math inline">¬<em>P</em><em>r</em><em>i</em><em>m</em><em>e</em>(<em>n</em>) ⟹ ¬<em>P</em><em>r</em><em>i</em><em>m</em><em>e</em>(2<sup><em>n</em></sup>−1)</span>$
+assume n is not a prime, so <span
+class="math display"><em>n</em> = <em>k</em> * <em>m</em></span> <span
+class="math display">2<sup><em>k</em> * <em>m</em></sup> − 1 = (2<sup><em>k</em></sup>−1)(2<sup><em>m</em>(<em>k</em>−1)</sup>+2<sup><em>m</em>(<em>k</em>−2)</sup>+...+2<sup><em>m</em></sup>+1)</span>
+since it can be written as a product of two number, it is not prime!</p>
+</blockquote>

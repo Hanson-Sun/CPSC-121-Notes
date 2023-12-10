@@ -1,0 +1,341 @@
+<h1 id="module-3-number-systems-and-circuits-for-operations">Module 3:
+Number Systems and Circuits for Operations</h1>
+<h2 id="goals">Goals</h2>
+<ol type="1">
+<li><p>Convert unsigned (i.e., non-negative) integers from decimal to
+binary and back.</p></li>
+<li><p>Take the two’s complement of a binary integer.</p></li>
+<li><p>Convert signed (i.e., positive, negative, or zero) integers to
+binary and back.</p></li>
+<li><p>Convert unsigned (i.e., non-negative) integers from hexadecimal
+to binary and back.</p></li>
+<li><p>Add two binary integers.</p></li>
+<li><p>Critique the choice of a digital representation scheme—including
+describing its strengths, weaknesses, and flaws (such as imprecise
+representation or overflow)—for a given type of data and purpose, such
+as (1) fixed-width binary numbers using a two’s complement scheme for
+signed integer arithmetic in computers or (2) hexadecimal for human
+inspection of raw binary data.</p></li>
+</ol>
+<h2 id="number-of-system-of-base-b">Number of System of Base B</h2>
+<p>The decimal system is represented by the addition of the powers of
+10. <span
+class="math display"><em>N</em><sub><em>B</em></sub> = <em>d</em><sub><em>n</em></sub><em>d</em><sub><em>n</em> − 1</sub>...<em>d</em><sub>1</sub><em>d</em><sub>0</sub> = <em>d</em><sub><em>n</em></sub> ⋅ <em>B</em><sup><em>n</em></sup> + <em>d</em><sub><em>n</em> − 1</sub> ⋅ <em>B</em><sup><em>n</em> − 1</sup> + ... + <em>d</em><sub>1</sub> ⋅ <em>B</em><sup>1</sup> + <em>d</em><sub>0</sub> ⋅ <em>B</em><sup>0</sup></span></p>
+<p>It has digits from 0 to <span
+class="math inline"><em>B</em> − 1</span>. If B &gt; 10, use letters.
+For example, base 16 uses 0, 1,2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E,
+F.</p>
+<h2 id="binary-system">Binary System</h2>
+<p>The binary system is the addition of the powers of 2. <span
+class="math display"><em>N</em><sub>2</sub> = <em>d</em><sub><em>n</em></sub><em>d</em><sub><em>n</em> − 1</sub>...<em>d</em><sub>1</sub><em>d</em><sub>0</sub> = <em>d</em><sub><em>n</em></sub> ⋅ 2<sup><em>n</em></sup> + <em>d</em><sub><em>n</em> − 1</sub> ⋅ 2<sup><em>n</em> − 1</sup> + ... + <em>d</em><sub>1</sub> ⋅ 2<sup>1</sup> + <em>d</em><sub>0</sub> ⋅ 2<sup>0</sup></span>
+The digits in binary are ONLY 0 and 1.</p>
+<p>The binary system can be extended to fractional values. <span
+class="math display">$$N_{2} = 0.d_nd_{n-1}...d_1d_0 = d_n \cdot
+\frac{1}{2}^1 + d_{n-1} \cdot \frac{1}{2}^{2} + ... + d_1 \cdot
+\frac{1}{2}^{n-1} + d_0 \cdot \frac{1}{2}^n$$</span></p>
+<p>As a result, decimal binary numbers can only be finitely represented
+if the fraction can be written as a sum of <span
+class="math inline">$\frac{1}{2}$</span> powers.</p>
+<p>Because most fractions cannot be represented exactly with binary,
+there is floating point error, and fraction representations will always
+be inexact.</p>
+<h2 id="converting-a-binary-to-a-decimal-number">Converting a Binary to
+a Decimal Number</h2>
+<p>Add the powers of 2 together. A binary number with <span
+class="math inline"><em>n</em></span> digits can represent decimal
+values from the range <span
+class="math inline">[0,2<sup><em>n</em> − 1</sup>]</span>. &gt; Example:
+find the base 10 representation of <span
+class="math inline">110101<sub>2</sub></span><br />
+&gt; <span
+class="math inline">1 * 2<sup>5</sup> + 1 * 2<sup>4</sup> + 0 * 2<sup>3</sup> + 1 * 2<sup>2</sup> + 0 * 2<sup>1</sup> + 1 * 2<sup>0</sup> = 53</span>
+&gt; ## Converting a Decimal to a Binary Number 1. Repeatedly divide the
+number by 2 and record the remainder at each step. 2. reverse the order
+of the remainders</p>
+<blockquote>
+<p>Example: find the binary representation of 25<br />
+<span class="math inline">25/2 = 12<em>R</em>1</span><br />
+<span class="math inline">12/2 = 6<em>R</em>0</span><br />
+<span class="math inline">6/2 = 3<em>R</em>0</span><br />
+<span class="math inline">3/2 = 1<em>R</em>1</span><br />
+<span class="math inline">1/2 = 0<em>R</em>1</span><br />
+<span class="math inline">25<sub>10</sub> = 11001<sub>2</sub></span> ##
+Binary Addition and Subtraction Exactly same as addition in base 10,
+just do the carries and stuff. NOTE: 1 is the max and anymore will
+overflow. Example: add 1101 and 111 <span
+class="math display">$$\begin{align*} .^1 1^11^10^11&amp; \\+\;\;\;
+1\;1\;1&amp; \\ 1\;0\;1\;0\;0&amp; \end{align*}$$</span></p>
+</blockquote>
+<p>The same is true for subtraction. Remember to do the borrows <span
+class="math inline">10 − 1 = 1</span>. &gt; Example: subtract 11000 and
+1011 &gt; <span class="math display">$$\begin{align*}
+0\;1\;1\;\;\;\;\\1\;1^10^10^10&amp; \\ - \;\;1\;0\;\;1\;1&amp; \\
+1\;1\;\;0\;1\end{align*}$$</span></p>
+<h2 id="circuits-for-binary-addition">Circuits for Binary Addition</h2>
+<ul>
+<li><span class="math inline">1 + 1 = 10</span></li>
+<li><span class="math inline">1 + 0 = 01</span></li>
+<li><span class="math inline">0 + 1 = 01</span></li>
+<li><span class="math inline">0 + 0 = 00</span></li>
+</ul>
+The circuit that adds 2 ONE digit binary numbers is called a
+<strong>half-adder</strong>. The <strong>carry</strong> is an
+<strong>AND</strong> gate and the <strong>sum</strong> is an
+<strong>XOR</strong> gate.
+<center>
+<img src="assets/half_adder.png" width = "500px"></img>
+</center>
+<p>To construct a proper addition circuit, you need to create a
+<strong>+full adder</strong> to add 3 digits (carry). <span
+class="math display">$$\begin{align*}
+    P\\Q\\+R\\ \hline CS
+\end{align*}$$</span> We can break it down into two <strong>half
+adders</strong></p>
+<ol type="1">
+<li><span class="math display">$$\begin{align*}
+P\\+Q\\\hline C_1S_1 \end{align*} \implies \begin{align*}
+C_1S_1\\+\;R\\\hline \;\; \end{align*} \implies \begin{align*}
+S_1\\+\;R\\\hline C_2S \end{align*} $$</span></li>
+<li>It is impossible for <span
+class="math inline"><em>C</em><sub>1</sub></span> and <span
+class="math inline"><em>C</em><sub>2</sub></span> to both be 1, because
+<span class="math inline">1 + 1 = 10</span>, which gives a max carry of
+1. Hence we can say <span
+class="math inline"><em>C</em> ≡ <em>C</em><sub>1</sub> ∨ <em>C</em><sub>2</sub></span></li>
+<li>Combining each half-adding step, we get</li>
+</ol>
+<center>
+<img src = "assets\full_adder.png" width = "500px"></img>
+</center>
+To add TWO numbers with MORE digits, we cain chain full adders in
+parallel (<strong>Parallel Adder</strong>)<br />
+
+<center>
+<img src = "assets/parallel_adder.png" width = "500px"></img>
+</center>
+<h2 id="signed-integers">Signed Integers</h2>
+<p>Computers use a fixed amount of bits to represent binary integers.
+The sign can be represented by the <strong>left most bit</strong>. If
+the left most bit is active subtract <span
+class="math inline">2<sup><em>n</em> − 1</sup></span> from the digit. An
+<span class="math inline"><em>n</em></span> bit signed integer can
+represent values from <span
+class="math inline">[−2<sup><em>n</em> − 1</sup>,2<sup><em>n</em> − 1</sup>−1]</span>.
+Note that the range of values that a signed integter can represent is
+same as that of an unsigned integter. &gt; Example:<br />
+&gt; 127 = 01111111<br />
+&gt; -128 = 10000000<br />
+&gt; The left most bit denotes <strong>-128</strong>, and the rest are
+added. ie<br />
+&gt; -100 = 10011100 = -128 + 4 + 8 + 16</p>
+<p>There are many ways to represent signed integers, but in this course,
+we use the <strong>twos-complement</strong>!!</p>
+<h2
+id="twos-complements-and-the-computer-representation-of-signed-integers">Two’s
+Complements and the Computer Representation of Signed Integers</h2>
+<p>However, subtraction with signed integers is complicated so we can
+use the two’s complement instead. &gt; 8 Bit Two’s Complement: for an
+integer <span class="math inline"><em>a</em></span> between -128 and 127
+&gt; <span class="math display">$$\text{Two's complement of }a =
+\begin{cases}
+      a &amp; a\geq 0 \\
+      2^8 - |a| &amp; 0 &lt; 0
+\end{cases}.$$</span> ### Computing the Two’s Complement (8-bit) - write
+the 8-bit binary representation of <span
+class="math inline">|<em>a</em>|</span> - Switch all the 1’s to 0’s and
+all the 0’s to 1’s. (This is called flipping, or complementing, the
+bits.</p>
+<ul>
+<li>Add 1 in binary notation.</li>
+</ul>
+<blockquote>
+<p>Example: compute the two’s complement for -46<br />
+<span
+class="math inline">|−46|<sub>10</sub> = 46<sub>10</sub> = 00101110<sub>2</sub> → 11010001 → 11010010</span></p>
+</blockquote>
+<h3 id="rationale">Rationale</h3>
+<ol type="1">
+<li>The binary representation of <span
+class="math inline">2<sup>8</sup> − 1 = 11111111<sub>2</sub></span></li>
+<li>Subtracting an 8-bit binary number from <span
+class="math inline">11111111<sub>2</sub></span> switches all the 1s to
+0s and vice versa.</li>
+<li><span
+class="math inline">2<sup>8</sup> − |<em>a</em>| = [(2<sup>8</sup>−1)−|<em>a</em>|] + 1</span>
+for any number</li>
+</ol>
+<h3 id="finding-a-number-with-a-given-twos-complement">Finding a Number
+with a Given Two’s Complement</h3>
+<p>Do the same thing as finding the two’s complement &gt; Example: find
+the decimal representation with the two’s complement 10101001<br />
+&gt; <span
+class="math inline">10101001 → 01010110 → 01010111 → 87 →  − 87</span></p>
+<h2
+id="addition-and-subtraction-with-integers-in-twos-complement-form">Addition
+and Subtraction with Integers in Two’s Complement Form</h2>
+<p><span
+class="math display"><em>A</em> − <em>B</em> = <em>A</em> + (−<em>B</em>)</span>
+We can just add numbers to subtract if the negative numbers are written
+in its two’s complement form (<strong>9th bit is discarded</strong>).
+### Rationale: <span
+class="math display">(<em>A</em>+<em>B</em><sub><em>t</em></sub>) = <em>A</em> + 2<sup>8</sup> − |<em>B</em>| = <em>A</em> − <em>B</em> + 2<sup>8</sup></span>
+<span
+class="math display">(<em>A</em>−<em>B</em>+2<sup>8</sup>) (mod  2<sup>8</sup>) ≡ (<em>A</em>−<em>B</em>) (mod  2<sup>8</sup>) + 0</span>
+Since <span
+class="math inline"><em>A</em> − <em>B</em> &lt; 2<sup>8</sup></span>
+<span class="math display">$$\boxed{ A - B \equiv (A +
+B_t)\pmod{2^8}}$$</span></p>
+<h2 id="representing-fractional-values-with-decimals">Representing
+Fractional Values with Decimals</h2>
+<p>!!! i need to do this shit !!</p>
+<h2 id="hexadecimal-notation">Hexadecimal Notation</h2>
+Known as Base 16, and is based on power of 16. <span
+class="math display"><em>N</em><sub>16</sub> = <em>d</em><sub><em>n</em></sub><em>d</em><sub><em>n</em> − 1</sub>...<em>d</em><sub>1</sub><em>d</em><sub>0</sub> = <em>d</em><sub><em>n</em></sub> ⋅ 16<sup><em>n</em></sup> + <em>d</em><sub><em>n</em> − 1</sub> ⋅ 16<sup><em>n</em> − 1</sup> + ... + <em>n</em><sub>1</sub> ⋅ 16<sup>1</sup> + <em>n</em><sub>0</sub> ⋅ 16<sup>0</sup></span>
+<center>
+<img src = "assets/hexadecimal_table.png" width = "350px"></img>
+</center>
+<h2 id="converting-hexadecimal-to-decimal">Converting Hexadecimal to
+Decimal</h2>
+<p>Apply same method as <a
+href="#converting-a-decimal-to-a-binary-number">Converting a Decimal to
+a Binary Number</a>. Use the base and multiply.</p>
+<blockquote>
+<p><strong>Example</strong>: Convert <span
+class="math inline">3<em>C</em><em>F</em><sub>16</sub></span> to decimal
+notation<br />
+<span
+class="math inline">3 * 16<sup>2</sup> + 12 * 16<sup>1</sup> + 15 * 16<sup>0</sup> = 975<sub>10</sub></span></p>
+</blockquote>
+<h2 id="converting-decimal-to-hexadecimal">Converting Decimal to
+Hexadecimal</h2>
+<p>Apply same method as <a
+href="#converting-a-decimal-to-a-binary-number">Converting a Decimal to
+a Binary Number</a>, except divide by 16.</p>
+<blockquote>
+<p><strong>Example</strong>: Convert 1628 to hexadecimal notation<br />
+<span class="math inline">1628/16 = 101<em>R</em>12</span><br />
+<span class="math inline">101/16 = 6<em>R</em>5</span><br />
+<span class="math inline">6/16 = 0<em>R</em>6</span><br />
+<span
+class="math inline">1628<sub>10</sub> = 65<em>C</em><sub>16</sub></span></p>
+</blockquote>
+<h2 id="converting-hexadecimal-to-binary">Converting Hexadecimal to
+Binary</h2>
+<p>Base 16 happens to be a power of 2. If we look at the expansion of
+Hexadecimal, <span class="math display">$$\begin{align*}
+    N_{16} &amp;= d_n \cdot 16^n + d_{n-1} \cdot 16 ^{n-1} + ... + n_1
+\cdot 16^1 + n_0 \cdot 16^0 \\ &amp;= d_n \cdot 2^{4n} + d_{n-1} \cdot
+2^{4(n-1)} + ... + n_1 \cdot 2^4 + n_0 \cdot 2^0
+\end{align*}$$</span> We realize we can directly convert each digit in a
+hexadecimal to its <strong>4 digit</strong> binary counterpart and
+<strong>append it</strong> together for the binary definition.</p>
+<blockquote>
+<p><strong>Example</strong>: find the binary representation of <span
+class="math inline"><em>C</em>50<em>A</em><sub>16</sub></span><br />
+<span
+class="math inline">1100 0101 0000 1010 → 1100010100001010</span></p>
+</blockquote>
+<h2 id="converting-binary-to-hexadecimal">Converting Binary to
+Hexadecimal</h2>
+<p>Using the logic derived above 1. Group the digits of the binary
+number into sets of four, starting from the right and adding leading
+zeros as needed. 2. Convert the binary numbers in each set of four into
+hexadecimal digits. Append those hexadecimal digits.</p>
+<blockquote>
+<p>Example: Convert <span
+class="math inline">100110110101001<sub>2</sub></span> into hexadecimal
+notation<br />
+<span
+class="math inline">0100 1101 1010 1001 → 4<em>D</em><em>A</em>9<sub>16</sub></span></p>
+</blockquote>
+<h2 id="overflow-and-underflow">Overflow and Underflow</h2>
+<p><strong>Overflow</strong>: when you run out of space,greater than
+upper bound - addition of two positive operands produces a negative sum
+- <span
+class="math inline">¬<em>a</em><sub><em>n</em> − 1</sub> ∧ ¬<em>b</em><sub><em>n</em> − 1</sub> ∧ <em>s</em><sub><em>n</em> − 1</sub></span></p>
+<p><strong>Underflow</strong>: when you run out of space, less that
+lower bound - addition of two negative operands produces a positive sum
+- <span
+class="math inline"><em>a</em><sub><em>n</em> − 1</sub> ∧ <em>b</em><sub><em>n</em> − 1</sub> ∧ ¬<em>s</em><sub><em>n</em> − 1</sub></span></p>
+<p>For unsigned, the number of bits increase during overflow. - check
+the overflow a <span class="math inline"><em>n</em></span> bit number
+becomes <span class="math inline"><em>n</em> + 1</span> bits.</p>
+<h2 id="reading-memory-dumps">Reading Memory Dumps</h2>
+<p>On a computer, smallest memory is 1 byte (8 bits). Memory dumps are
+just <strong>dumps of the bytes</strong>. They are shown in Hexadecimal
+(2 digits). The actual content can be found by converting to binary.
+&gt; <strong>Example</strong>: What does memory dump of A3 BB 59 2E
+represent?<br />
+&gt; <span
+class="math inline"><em>A</em>3<sub>16</sub> = 10100011<sub>2</sub> </span>
+<span
+class="math inline"><em>B</em><em>B</em><sub>16</sub> = 10111011<sub>2</sub> </span>
+<span class="math inline">59<sub>16</sub> = 01011001<sub>2</sub> </span>
+<span
+class="math inline">2<em>E</em><sub>16</sub> = 00101110<sub>2</sub></span>
+&gt;</p>
+<h2 id="modular-arithmetic">Modular Arithmetic</h2>
+<p>Mathematics with remainders - classifying operations, calculations,
+and grouping numbers based on remainders</p>
+<p><span
+class="math display"><em>x</em> ≡ <em>y</em> mod  <em>m</em></span> if
+<span class="math inline"><em>x</em>/<em>m</em></span> and <span
+class="math inline"><em>y</em>/<em>m</em></span> have the same remainder
+- not that modulo returns a whole <em>class</em> of numbers, all with
+the same remainder (think loops around a clock, its periodic!) - with
+modular arithmetic, order of operations and modulus does not matter -
+you can do the operations before doing the mods.</p>
+<h3 id="fundamental-theorem-of-arithmetic">Fundamental theorem of
+arithmetic</h3>
+<p>if <span
+class="math inline"><em>a</em> ≡ <em>c</em> mod  <em>m</em></span> and
+<span
+class="math inline"><em>b</em> ≡ <em>d</em> mod  <em>m</em></span>, then
+<span
+class="math display"><em>a</em><em>x</em> + <em>b</em> = <em>c</em><em>x</em> + <em>d</em> mod  <em>m</em></span></p>
+<p>When integers overflow in a computer, we are essentially performing
+modular arithmetic.</p>
+<h2 id="character-encoding">Character encoding</h2>
+<ul>
+<li><p>computers encode text characters in a system of bits</p></li>
+<li><p>ASCII uses 7 bits to represent 128 different characters</p>
+<ul>
+<li>each 7 bit combination of binary represents a different character
+(look it up on a table)</li>
+<li>(0-9, A-Z, a-z) are the ordered encoding (the bits go up as u go
+down the list!)</li>
+<li>number = 011 [. . . .], upper case 10 [. . . . .], lower case 11 [.
+. . . .]</li>
+</ul></li>
+</ul>
+<h2 id="real-numbers">Real numbers</h2>
+<ul>
+<li>floats are represented into a pseudo scientific form</li>
+<li>there is a mantissa and exponent part</li>
+<li><span class="math inline">1724 = 0.1724 × 10<sup>4</sup></span></li>
+<li><span
+class="math inline">1.1011011101010 × 2<sup>1010</sup></span></li>
+<li>mantissa -&gt; 23 bits for float, 52 bit for double</li>
+<li>the exponents has 8 bits in float and 11 bits in double</li>
+<li>1 bit to represent the sign</li>
+<li>for floats, a total of 32 bits</li>
+<li>sign … exponent … mantissa</li>
+</ul>
+<h2 id="worksheet-3">Worksheet 3</h2>
+<p>Consider an n-bit binary number 1. We can represent <span
+class="math inline">2<sup><em>n</em></sup></span> 2. the range for an
+unsigned integer is <span
+class="math inline">[0,2<sup><em>n</em></sup>−1]</span> 3. the range for
+a signed integer is <span
+class="math inline">[−2<sup><em>n</em> − 1</sup>,2<sup><em>n</em> − 1</sup>−1]</span>
+4. Because in a representation of a signed binary integer, the first
+digit represents <span
+class="math inline"> − 2<sup><em>n</em> − 1</sup></span>, and the rest
+of the digits add on to that value, so theres always one less positive
+integer. Basically you need to start from negative. Or in other words,
+one bit is reserved for the negative contribution (left-most), so there
+is only <span class="math inline"><em>n</em> − 1</span> bits available
+to create the positive number. 5. if the left most bit is 1, its
+negative. if its 0, is positive. If everything is 0, the number is 0. 6.
+the most negative number, the negation is not possible. Inversion with
+two’s complement will also not work.</p>
